@@ -22,11 +22,14 @@ public class sheltergui extends Application {
         button = new Button();
         button.setText("Test Click");
 
+        button.setOnAction(e -> System.out.println("hi"));
+
+
         StackPane layout = new StackPane();
         layout.getChildren().add(button);
-
         Scene scene = new Scene(layout, 300,250);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
 }
+
