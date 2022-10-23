@@ -1,10 +1,9 @@
 package animalshelter;
 
 public class Account {
-    
-
+        
     public void createPassword(String password, String id){
-
+        
     }
     public void createUsername(String username, String id){
 
