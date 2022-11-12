@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch appointment",
+            "request": "launch",
+            "mainClass": "animalshelter.appointment",
+            "projectName": "Dog-Shelter-Inventory-System_751f0ca3"
+        },
+        {
+            "type": "java",
             "name": "Launch Current File",
             "request": "launch",
             "mainClass": "${file}"
