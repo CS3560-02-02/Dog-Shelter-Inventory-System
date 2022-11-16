@@ -8,18 +8,17 @@ import javafx.fxml.FXML;
 
 public class Appointment {
 
-    private int idAppointment;
+    private int appointmentID;
     private String name;
     private Date date;
     private String reason;
     private Time time;
 
   //getters
-  
-    public int getId() {
-      return idAppointment;
-      }
 
+    public int getId() {
+      return appointmentID;
+      }
 
     public String getName() {
       return name;
@@ -40,16 +39,14 @@ public class Appointment {
 
   //setters
 
-  public void setId(int idAppointment) {
-      this.idAppointment = idAppointment;
+  public void setId(int appointmentID) {
+      this.appointmentID = appointmentID;
       }
   
-    
   public void setName(String name) {
       this.name = name;
       }  
       
-
   public void setDate(Date date){
     this.date = date;
   }

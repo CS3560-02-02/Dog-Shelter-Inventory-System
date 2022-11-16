@@ -1,7 +1,7 @@
 package animalshelter;
 
 public class Dog {
-    private int idDog;
+    private int dogID;
     private String name;
     private int age;
     private String gender;
@@ -13,7 +13,7 @@ public class Dog {
 
 //getters
 public int getId() {
-    return idDog;
+    return dogID;
     }
 
 public String getName() {
@@ -49,8 +49,8 @@ public int getFee() {
     }
 
 //setters
-public void setId(int idDog) {
-    this.idDog = idDog;
+public void setId(int dogID) {
+    this.dogID = dogID;
     }
 
 public void setName(String name) {
@@ -86,15 +86,15 @@ public void setFee(int fee) {
     }  
     
 
-    
+
 // default constructor    
 public Dog(){
 }
 
 
 //get dogs from database
-public Dog(int idDog, String name, int age,String gender, int weight, String stateOfHealth, String status, String breed, int fee) {
-    this.idDog = idDog;
+public Dog(int dogID, String name, int age,String gender, int weight, String stateOfHealth, String status, String breed, int fee) {
+    this.dogID = dogID;
     this.name = name;
     this.age = age;
     this.gender = gender;
