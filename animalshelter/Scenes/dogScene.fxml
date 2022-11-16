@@ -33,19 +33,35 @@
 -->
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="animalshelter.login">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="animalshelter.dogController">
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
-        <Label alignment="CENTER" layoutX="155.0" layoutY="177.0" style="&#10;" text="Drag components from Library here…" textAlignment="CENTER" textFill="#9f9f9f" wrapText="false">
-          <font>
-            <Font size="18.0" />
-          </font>
-        </Label>
+            <TableView fx:id="table_dogs" layoutX="168.0" layoutY="71.0" prefHeight="406.0" prefWidth="467.0">
+              <columns>
+                <TableColumn fx:id="col_dogID" prefWidth="44.0" text="Dog ID" />
+                <TableColumn fx:id="col_name" prefWidth="58.0" text="Name" />
+                  <TableColumn fx:id="col_age" prefWidth="31.0" text="Age" />
+                  <TableColumn fx:id="col_gender" prefWidth="47.0" text="Gender" />
+                  <TableColumn fx:id="col_weight" prefWidth="53.0" text="Weight" />
+                  <TableColumn fx:id="col_state_of_health" prefWidth="94.0" text="State of Health" />
+                  <TableColumn fx:id="col_status" prefWidth="42.0" text="Status" />
+                  <TableColumn fx:id="col_breed" prefWidth="62.0" text="Breed" />
+                  <TableColumn fx:id="col_fee" prefWidth="36.0" text="Fee" />
+              </columns>
+            </TableView>
+            <AnchorPane prefHeight="478.0" prefWidth="164.0" style="-fx-background-color: #FFFFFF;" />
+            <Label layoutX="200.0" text="Dogs For Adoption">
+               <font>
+                  <Font name="Courgette Regular" size="48.0" />
+               </font>
+            </Label>
       </children>
     </AnchorPane>
   </children>
