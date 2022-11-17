@@ -11,6 +11,19 @@ public class Dog {
     private String breed;
     private int fee;
 
+
+//Constructor for Dogs
+public Dog(int dogID, String name, int age,String gender, int weight, String stateOfHealth, String status, String breed, int fee){
+    this.dogID = dogID;
+    this.name = name;
+    this.age = age;
+    this.gender = gender;
+    this.weight = weight;
+    this.stateOfHealth = stateOfHealth;
+    this.status = status;
+    this.breed = breed;
+    this.fee = fee;
+    }
 //getters
 public int getId() {
     return dogID;
@@ -84,25 +97,4 @@ public void setbreed(String breed) {
 public void setFee(int fee) {
     this.fee = fee;
     }  
-    
-
-
-// default constructor    
-public Dog(){
-}
-
-
-//get dogs from database
-public Dog(int dogID, String name, int age,String gender, int weight, String stateOfHealth, String status, String breed, int fee) {
-    this.dogID = dogID;
-    this.name = name;
-    this.age = age;
-    this.gender = gender;
-    this.weight = weight;
-    this.stateOfHealth = stateOfHealth;
-    this.status = status;
-    this.breed = breed;
-    this.fee = fee;
-    }    
-
 }
