@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch animalShelterGUI",
+            "request": "launch",
+            "mainClass": "animalshelter.animalShelterGUI",
+            "projectName": "Dog-Shelter-Inventory-System_751f0ca3"
+        },
+        {
+            "type": "java",
             "name": "Launch shelterGUI",
             "request": "launch",
             "mainClass": "animalshelter.shelterGUI",

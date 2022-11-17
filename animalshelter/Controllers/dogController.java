@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -20,7 +21,16 @@ import animalshelter.Dog;
 public class dogController implements Initializable{
 
     @FXML
-    private Button button_appointment;
+    private Button button_appointment_page;
+
+    @FXML
+    private Button button_logout;
+
+    @FXML
+    private Button button_search;
+    
+    @FXML
+    private Label label_welcome;
     
     @FXML
     private TableView<Dog> table_dogs;
@@ -60,6 +70,15 @@ public class dogController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        button_appointment_page.setOnAction(new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent event){
+
+            }
+        });
+
+
         col_dogID.setCellValueFactory(new PropertyValueFactory<Dog, Integer>("dogID"));
         col_name.setCellValueFactory(new PropertyValueFactory<Dog, String>("name"));
         col_age.setCellValueFactory(new PropertyValueFactory<Dog, Integer>("age"));
@@ -73,14 +92,12 @@ public class dogController implements Initializable{
 
         table_dogs.setItems(generateList());
 
-
-        button_appointment.setOnAction(new EventHandler<ActionEvent>(){
-            @Override
-            public void handle(ActionEvent event){
-
-            }
-        });
     }
+
+    public void setUserInformation(String username){
+        label_
+    }
+
 
     
 
