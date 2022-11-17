@@ -7,15 +7,15 @@ import java.sql.Time;
 public class Appointment{
 
   private int appointmentID;
-  private String name;
+  private String dogID;
   private Date date;
   private String reason;
   private Time time;
 
 //Constructor for Appointments
-public Appointment(int appointmentID, String name, Date date, String reason, Time time){
+public Appointment(int appointmentID, String dogID, Date date, String reason, Time time){
   this.appointmentID= appointmentID;
-  this.name = name;
+  this.dogID = dogID;
   this.date = date;
   this.reason = reason;
   this.time = time;
@@ -27,11 +27,11 @@ public Appointment(int appointmentID, String name, Date date, String reason, Tim
     return appointmentID;
     }
 
-  public String getName() {
-    return name;
+  public String getDogName() {
+    return dogID;
     }
 
-  public Date getdate(){
+  public Date getDate(){
     return date;
     }
 
@@ -49,8 +49,8 @@ public Appointment(int appointmentID, String name, Date date, String reason, Tim
     this.appointmentID = appointmentID;
     }
   
-  public void setName(String name) {
-    this.name = name;
+  public void getDogName(String dogID) {
+    this.dogID = dogID;
     }  
       
   public void setDate(Date date){

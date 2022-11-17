@@ -1,4 +1,4 @@
-package animalshelter;
+package animalshelter.Controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -9,22 +9,24 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import animalshelter.Dog;
+
 public class dogController implements Initializable{
 
+
     @FXML
-    private Button button_appointment_page;
+    private Button button_go_appointments;
 
     @FXML
     private Button button_logout;
 
     @FXML
     private Button button_search;
-    
-    @FXML
-    private Label label_welcome;
     
     @FXML
     private TableView<Dog> table_dogs;
@@ -55,6 +57,16 @@ public class dogController implements Initializable{
 
     @FXML
     private TableColumn<Dog, Integer> col_fee;
+
+    @FXML
+    void goToAppointmentsClicked(MouseEvent event) {
+
+    }
+
+    @FXML
+    void logoutClicked(MouseEvent event) {
+
+    }
 
 
     public ObservableList<Dog> generateList(){

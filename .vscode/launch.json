@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch animalShelterSQL",
+            "request": "launch",
+            "mainClass": "animalshelter.animalShelterSQL",
+            "projectName": "Dog-Shelter-Inventory-System_751f0ca3"
+        },
+        {
+            "type": "java",
             "name": "Launch Current File",
             "request": "launch",
             "mainClass": "${file}"

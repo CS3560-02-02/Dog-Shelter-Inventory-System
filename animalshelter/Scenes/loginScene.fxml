@@ -34,45 +34,42 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="animalshelter.loginController">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="animalshelter.Controllers.loginController">
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" style="-fx-background-color: #D3D3D3;" VBox.vgrow="ALWAYS">
          <children>
-            <Label layoutX="67.0" layoutY="14.0" text="Welcome To Our Animal Shelter!">
+            <Label fx:id="label_welcome" layoutX="67.0" layoutY="14.0" text="Welcome To Our Animal Shelter!">
                <font>
                   <Font size="36.0" />
                </font>
             </Label>
-            <Label layoutX="27.0" layoutY="120.0" text="Username">
+            <Label fx:id="label_username" layoutX="27.0" layoutY="120.0" text="Username">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="27.0" layoutY="173.0" text="Password">
+            <Label fx:id="label_password" layoutX="27.0" layoutY="173.0" text="Password">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <TextField layoutX="131.0" layoutY="114.0" prefHeight="39.0" prefWidth="189.0" text="Username">
+            <TextField fx:id="tf_username" layoutX="131.0" layoutY="114.0" prefHeight="39.0" prefWidth="189.0">
                <font>
                   <Font size="18.0" />
                </font>
             </TextField>
-            <TextField layoutX="131.0" layoutY="167.0" prefHeight="39.0" prefWidth="189.0" text="Password">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </TextField>
-            <Button layoutX="157.0" layoutY="243.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF;" text="Login">
+            <Button fx:id="button_login" layoutX="157.0" layoutY="243.0" mnemonicParsing="false" onMouseClicked="#loginClicked" prefHeight="27.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF;" text="Login">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
+            <PasswordField fx:id="pf_password" layoutX="131.0" layoutY="167.0" prefHeight="39.0" prefWidth="189.0" />
          </children>
     </AnchorPane>
   </children>

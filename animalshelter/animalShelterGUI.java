@@ -1,6 +1,8 @@
 package animalshelter;
 
 import java.io.IOException;
+import java.sql.Connection;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -8,9 +10,10 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 
-
 public class animalShelterGUI extends Application {
   
+    Connection conn;
+
    private static Stage stg;
   
    @Override
@@ -23,8 +26,21 @@ public class animalShelterGUI extends Application {
        Scene scene = new Scene(root);
        stage.setScene(scene);
        changeScene("Scenes/loginScene.fxml");
+
+       CheckConnection();
+       
        
        stage.show();
+   }
+
+   public void CheckConnection(){
+    conn = animalShelterSQL.DbConnector();
+    if(conn == null){
+        System.out.println("Connection Not Successful");
+        System.exit(1);
+    } else{
+        System.out.println("Connection Successful");
+    }
    }
 
    /**
