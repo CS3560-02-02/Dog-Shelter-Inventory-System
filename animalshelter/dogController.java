@@ -1,8 +1,7 @@
-package animalshelter.Controllers;
+package animalshelter;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -10,13 +9,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import java.util.List;
-import java.util.ArrayList;
-import java.beans.EventHandler;
 import java.net.URL;
 import java.util.ResourceBundle;
-import animalshelter.Account;
-import animalshelter.Dog;
 
 public class dogController implements Initializable{
 
@@ -71,14 +65,6 @@ public class dogController implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        button_appointment_page.setOnAction(new EventHandler<ActionEvent>(){
-            @Override
-            public void handle(ActionEvent event){
-
-            }
-        });
-
-
         col_dogID.setCellValueFactory(new PropertyValueFactory<Dog, Integer>("dogID"));
         col_name.setCellValueFactory(new PropertyValueFactory<Dog, String>("name"));
         col_age.setCellValueFactory(new PropertyValueFactory<Dog, Integer>("age"));
@@ -93,12 +79,5 @@ public class dogController implements Initializable{
         table_dogs.setItems(generateList());
 
     }
-
-    public void setUserInformation(String username){
-        label_
-    }
-
-
-    
 
 }

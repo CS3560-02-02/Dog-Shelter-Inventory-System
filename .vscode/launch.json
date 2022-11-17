@@ -6,36 +6,15 @@
     "configurations": [
         {
             "type": "java",
-            "name": "Launch animalShelterGUI",
-            "request": "launch",
-            "mainClass": "animalshelter.animalShelterGUI",
-            "projectName": "Dog-Shelter-Inventory-System_751f0ca3"
-        },
-        {
-            "type": "java",
-            "name": "Launch shelterGUI",
-            "request": "launch",
-            "mainClass": "animalshelter.shelterGUI",
-            "projectName": "Dog-Shelter-Inventory-System_751f0ca3"
-        },
-        {
-            "type": "java",
-            "name": "Launch appointment",
-            "request": "launch",
-            "mainClass": "animalshelter.appointment",
-            "projectName": "Dog-Shelter-Inventory-System_751f0ca3"
-        },
-        {
-            "type": "java",
             "name": "Launch Current File",
             "request": "launch",
             "mainClass": "${file}"
         },
         {
             "type": "java",
-            "name": "Launch sheltergui",
+            "name": "Launch animalShelterGUI",
             "request": "launch",
-            "mainClass": "animalshelter.sheltergui",
+            "mainClass": "animalshelter.animalShelterGUI",
             "projectName": "Dog-Shelter-Inventory-System_751f0ca3",
             "vmArgs": "--module-path C:/Users/Aiden/Desktop/Javafx/javafx-sdk-19/lib --add-modules javafx.controls,javafx.fxml"
         }

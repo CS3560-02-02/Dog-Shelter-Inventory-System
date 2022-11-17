@@ -1,4 +1,4 @@
-package animalshelter.Controllers;
+package animalshelter;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -17,6 +17,6 @@ public class loginController {
     @FXML
     private TextField tf_username;
 
-    
+
 
 }
