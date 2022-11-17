@@ -3,11 +3,7 @@ package animalshelter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
-import animalshelter.Dog;
-import animalshelter.Account;
 
 public class animalShelterSQL {
 
@@ -18,14 +14,6 @@ public class animalShelterSQL {
     private static final String url = "jdbc:mysql://localhost:3306/animalshelter";
 
 
-     /**
-     * Opens connection to database based on following info:
-     * Server name: wgudb.ucertify.com
-     * Port: 3306
-     * Database name: WJ07T76
-     * Username: U07T76
-     * Password: 53689123270
-     */
     public static void startConnection() {
         System.out.println("Attempting to Connect to Database");
 

@@ -47,7 +47,7 @@
             <Font size="18.0" />
           </font>
         </Label>
-            <Button fx:id="button_save" layoutX="247.0" layoutY="332.0" mnemonicParsing="false" text="Save Appointment" />
+            <Button fx:id="button_save" layoutX="263.0" layoutY="322.0" mnemonicParsing="false" text="Save Appointment" />
       </children>
     </AnchorPane>
   </children>
