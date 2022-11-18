@@ -90,7 +90,6 @@ public class dogController implements Initializable{
         col_age.setCellValueFactory(new PropertyValueFactory<Dog, Integer>("age"));
         col_gender.setCellValueFactory(new PropertyValueFactory<Dog, String>("gender"));
         col_weight.setCellValueFactory(new PropertyValueFactory<Dog, Double>("weight"));
-        col_state_of_health.setCellValueFactory(new PropertyValueFactory<Dog, String>("state_of_health"));
         col_status.setCellValueFactory(new PropertyValueFactory<Dog, String>("status"));
         col_breed.setCellValueFactory(new PropertyValueFactory<Dog, String>("breed"));
         col_fee.setCellValueFactory(new PropertyValueFactory<Dog, Integer>("fee"));

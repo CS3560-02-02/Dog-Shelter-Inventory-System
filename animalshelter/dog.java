@@ -6,7 +6,6 @@ public class Dog {
     private int age;
     private String gender;
     private double weight;
-    private String stateOfHealth;
     private String status;
     private String breed;
     private int fee;
@@ -19,7 +18,6 @@ public Dog(int dogID, String name, int age,String gender, int weight, String sta
     this.age = age;
     this.gender = gender;
     this.weight = weight;
-    this.stateOfHealth = stateOfHealth;
     this.status = status;
     this.breed = breed;
     this.fee = fee;
@@ -43,10 +41,6 @@ public String getGender() {
 
 public double getWeight() {
     return weight;
-    }
-
-public String getStateOfHealth() {
-    return stateOfHealth;
     }
 
 public String getstatus() {
@@ -80,10 +74,6 @@ public void setGender(String gender) {
 
 public void setWeight(double weight) {
     this.weight = weight;
-    } 
-    
-public void setStateOfHealth(String stateOfHealth) {
-    this.stateOfHealth = stateOfHealth;    
     } 
 
 public void setstatus(String status) {

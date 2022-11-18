@@ -1,2 +1,2 @@
-SELECT * FROM animalshelter.dog;
+SELECT * FROM animalshelter.customer;
 

@@ -23,7 +23,8 @@
             "request": "launch",
             "mainClass": "animalshelter.animalShelterGUI",
             "projectName": "Dog-Shelter-Inventory-System_751f0ca3",
-            "vmArgs": "--module-path C:/Users/Aiden/Desktop/Javafx/javafx-sdk-19/lib --add-modules javafx.controls,javafx.fxml"
+            //change vmArgs to your computer path instead of mine
+            "vmArgs": "--module-path C:/Users/Aiden/Desktop/Javafx/javafx-sdk-19/lib --add-modules javafx.controls,javafx.fxml" 
         }
     ]
 }
