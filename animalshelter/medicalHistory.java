@@ -1,18 +1,17 @@
 package animalshelter;
 
 public class medicalHistory {
-    private int id;
+    private int medicalHistoryID;
     private boolean microchip;
-    private boolean vaccine;
-    private String date;
-    private String discription;
+    private boolean vaccinated;
+    private String dateReceived;
 
     public int getId() {
-        return id;
+        return medicalHistoryID;
     }
     
-    public void setId(int id) {
-        this.id = id;
+    public void setId(int medicalHistoryID) {
+        this.medicalHistoryID = medicalHistoryID;
     }
 
     public boolean getMicrochip() {
@@ -24,27 +23,19 @@ public class medicalHistory {
     }
 
     public boolean getVaccine() {
-        return vaccine;
+        return vaccinated;
     }
     
-    public void setVaccine(boolean vaccine) {
-        this.vaccine = vaccine;
+    public void setVaccine(boolean vaccinated) {
+        this.vaccinated = vaccinated;
     }
     
     public String getDate() {
-        return date;
+        return dateReceived;
     }
     
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public String getDiscription() {
-        return discription;
-    }
-    
-    public void setDiscription(String discription) {
-        this.discription = discription;
+    public void setDate(String dateReceived) {
+        this.dateReceived = dateReceived;
     }
 
 }

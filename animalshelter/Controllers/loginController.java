@@ -1,31 +1,25 @@
 package animalshelter.Controllers;
 
-import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
-import javafx.scene.Node;
-
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
-import javafx.stage.Stage;
 
 
 public class loginController implements Initializable{
-    Connection conn;
-    PreparedStatement pst = null;
-    ResultSet rs = null;
-
     @FXML
     private Button button_login;
 
@@ -44,18 +38,56 @@ public class loginController implements Initializable{
     @FXML
     private TextField tf_username;
 
-    @FXML
-    void loginClicked(MouseEvent event) throws IOException {
+    Connection conn;
+    PreparedStatement pst = null;
+    ResultSet rs = null;
 
+    @FXML
+    void loginClicked(ActionEvent event) {
+
+        String username = tf_username.getText();
+        String password = pf_password.getText();
+
+        if(username.equals("") && password.equals("")){
+
+            JOptionPane.showMessageDialog(null, "Username or Password Blank");
+        }else{
+
+            try{
+                Class.forName("com.mysql.jdbc.Driver");
+                conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/animalshelter", "root", "testpass11!Aa");
+                pst = conn.prepareStatement("select * from customer where username =? and password=?");
+
+                pst.setString(1, username);
+                pst.setString(2, password);
+
+                rs = pst.executeQuery();
+
+                if(rs.next()){
+                    JOptionPane.showMessageDialog(null,"Login Success");
+                }else{
+                    JOptionPane.showMessageDialog(null,"Login Failed");
+                    tf_username.setText("");
+                    pf_password.setText("");
+                    tf_username.requestFocus();
+                }
+
+            } catch(ClassNotFoundException e){
+                Logger.getLogger(loginController.class.getName()).log(Level.SEVERE, null, e);
+
+            }catch (SQLException e) {
+                Logger.getLogger(loginController.class.getName()).log(Level.SEVERE, null, e);
+
+            }
+        }
 
     }
 
 
 
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // TODO Auto-generated method stub
+        
         
     }
 }

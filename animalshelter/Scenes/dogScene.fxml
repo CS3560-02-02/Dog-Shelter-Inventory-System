@@ -63,9 +63,9 @@
                   <Button fx:id="button_logout" layoutX="56.0" layoutY="432.0" mnemonicParsing="false" onMouseClicked="#logoutClicked" text="Logout" />
                   <Button fx:id="button_search" layoutX="33.0" layoutY="356.0" mnemonicParsing="false" text="Search for Dogs" />
                </children></AnchorPane>
-            <Label layoutX="200.0" text="Dogs For Adoption">
+            <Label layoutX="194.0" layoutY="8.0" text="Dogs For Adoption">
                <font>
-                  <Font name="Courgette Regular" size="48.0" />
+                  <Font name="Franklin Gothic Heavy" size="48.0" />
                </font>
             </Label>
       </children>

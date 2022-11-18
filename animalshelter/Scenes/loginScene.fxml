@@ -64,7 +64,7 @@
                   <Font size="18.0" />
                </font>
             </TextField>
-            <Button fx:id="button_login" layoutX="157.0" layoutY="243.0" mnemonicParsing="false" onMouseClicked="#loginClicked" prefHeight="27.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF;" text="Login">
+            <Button fx:id="button_login" layoutX="157.0" layoutY="243.0" mnemonicParsing="false" onAction="#loginClicked" prefHeight="27.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF;" text="Login">
                <font>
                   <Font size="14.0" />
                </font>
