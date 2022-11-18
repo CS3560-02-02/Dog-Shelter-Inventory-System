@@ -10,12 +10,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import animalshelter.Dog;
+import animalshelter.animalShelterSQL.changeScene;
 
 public class dogController implements Initializable{
 
@@ -63,12 +63,12 @@ public class dogController implements Initializable{
 
     @FXML
     void goToAppointmentsClicked(ActionEvent event) {
-
+        changeScene.switchScene(event, "Scenes/appointmentScene.fxml");
     }
 
     @FXML
     void logoutClicked(ActionEvent event) {
-
+        changeScene.switchScene(event, "Scenes/loginScene.fxml");
     }
 
     @FXML

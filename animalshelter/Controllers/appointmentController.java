@@ -105,7 +105,7 @@ public class appointmentController implements Initializable{
 
     @FXML
     void createAppointmentClicked(ActionEvent event) throws IOException{
-
+    
     }
 
     @FXML
