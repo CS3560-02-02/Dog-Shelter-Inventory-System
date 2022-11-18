@@ -28,6 +28,13 @@ import javafx.scene.Node;
 
 
 public class loginController{
+
+    @FXML
+    private Button button_sign_up;
+
+    @FXML
+    private Label label_create_account;
+
     @FXML
     private Button button_login;
 
@@ -91,5 +98,10 @@ public class loginController{
 
             }
         }
+    }
+
+    @FXML
+    void signupClicked(ActionEvent event) {
+        changeScene.switchScene(event, "Scenes/createAccount.fxml");
     }
 }

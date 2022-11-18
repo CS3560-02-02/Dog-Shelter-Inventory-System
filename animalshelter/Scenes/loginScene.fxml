@@ -70,6 +70,12 @@
                </font>
             </Button>
             <PasswordField fx:id="pf_password" layoutX="131.0" layoutY="167.0" prefHeight="39.0" prefWidth="189.0" />
+            <Button fx:id="button_sign_up" layoutX="157.0" layoutY="351.0" mnemonicParsing="false" onAction="#signupClicked" prefHeight="30.0" prefWidth="80.0" text="Sign Up" />
+            <Label fx:id="label_create_account" layoutX="14.0" layoutY="352.0" text="Create Account">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
          </children>
     </AnchorPane>
   </children>
