@@ -1,5 +1,6 @@
 package animalshelter.Controllers;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -10,16 +11,23 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+
+import animalshelter.animalShelterSQL.changeScene;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import javafx.scene.Node;
 
 
-public class loginController implements Initializable{
+public class loginController{
     @FXML
     private Button button_login;
 
@@ -43,7 +51,7 @@ public class loginController implements Initializable{
     ResultSet rs = null;
 
     @FXML
-    void loginClicked(ActionEvent event) {
+    public void loginClicked(ActionEvent event) throws IOException {
 
         String username = tf_username.getText();
         String password = pf_password.getText();
@@ -65,6 +73,9 @@ public class loginController implements Initializable{
 
                 if(rs.next()){
                     JOptionPane.showMessageDialog(null,"Login Success");
+
+                    changeScene.switchScene(event, "Scenes/dogScene.fxml");
+                    
                 }else{
                     JOptionPane.showMessageDialog(null,"Login Failed");
                     tf_username.setText("");
@@ -80,14 +91,5 @@ public class loginController implements Initializable{
 
             }
         }
-
-    }
-
-
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        
-        
     }
 }

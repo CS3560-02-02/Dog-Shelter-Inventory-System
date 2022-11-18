@@ -1,5 +1,6 @@
 package animalshelter.Controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -23,6 +24,7 @@ import java.sql.Time;
 import java.util.ResourceBundle;
 
 import animalshelter.Appointment;
+import animalshelter.animalShelterSQL.changeScene;
 
 
 public class appointmentController implements Initializable{
@@ -46,6 +48,12 @@ public class appointmentController implements Initializable{
     private Label label_time;
 
     @FXML
+    private Label label_note;
+
+    @FXML
+    private Label label_reason_for_visit;
+
+    @FXML
     private RadioButton rb_adopt;
 
     @FXML
@@ -67,7 +75,10 @@ public class appointmentController implements Initializable{
     private Button button_create;
 
     @FXML
-    private Button button_reschedule;
+    private Button button_update;
+
+    @FXML
+    private Button button_delete_appointment;
 
     @FXML
     private TableView<Appointment> table_appointments;
@@ -88,14 +99,26 @@ public class appointmentController implements Initializable{
     private TableColumn<Appointment, Time> col_time;
 
     @FXML
-    void adoptionPageClicked(MouseEvent event) throws IOException {
-        Parent menu_parent = FXMLLoader.load(getClass().getResource("Scenes/dogScene.fxml"));
-        Scene SceneMenu = new Scene(menu_parent);
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(SceneMenu);
-        stage.show();
+    void adoptionPageClicked(ActionEvent event) throws IOException {
+        changeScene.switchScene(event, "Scenes/dogScene.fxml");
+    }
+
+    @FXML
+    void createAppointmentClicked(ActionEvent event) throws IOException{
 
     }
+
+    @FXML
+    void deleteAppointmentClicked(ActionEvent event) throws IOException{
+
+    }
+
+    @FXML
+    void updateAppointmentClicked(ActionEvent event) {
+
+    }
+
+
 
 
     @Override

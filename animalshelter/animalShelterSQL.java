@@ -1,8 +1,17 @@
 package animalshelter;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import javafx.scene.Node;
+
+import animalshelter.Controllers.appointmentController;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 
 public class animalShelterSQL {
@@ -16,6 +25,20 @@ public class animalShelterSQL {
             System.out.println(e);
         }
         return null;
+    }
+
+    public class changeScene {
+        public static void switchScene(ActionEvent event, String fxmlFile){
+            Parent root = null;
+            try{
+                FXMLLoader loader = new FXMLLoader(changeScene.class.getResource(fxmlFile));
+                root = loader.load();
+            }catch(IOException e){
+                e.printStackTrace();
+            }
+            Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+        }
     }
 
 }   

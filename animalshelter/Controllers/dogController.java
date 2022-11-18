@@ -2,6 +2,7 @@ package animalshelter.Controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -18,6 +19,8 @@ import animalshelter.Dog;
 
 public class dogController implements Initializable{
 
+    @FXML
+    private Label label_title;
 
     @FXML
     private Button button_go_appointments;
@@ -59,12 +62,17 @@ public class dogController implements Initializable{
     private TableColumn<Dog, Integer> col_fee;
 
     @FXML
-    void goToAppointmentsClicked(MouseEvent event) {
+    void goToAppointmentsClicked(ActionEvent event) {
 
     }
 
     @FXML
-    void logoutClicked(MouseEvent event) {
+    void logoutClicked(ActionEvent event) {
+
+    }
+
+    @FXML
+    void searchClicked(ActionEvent event) {
 
     }
 

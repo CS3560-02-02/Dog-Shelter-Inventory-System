@@ -59,11 +59,11 @@
             </TableView>
             <AnchorPane prefHeight="478.0" prefWidth="164.0" style="-fx-background-color: #FFFFFF;">
                <children>
-                  <Button fx:id="button_go_appointments" layoutX="21.0" layoutY="398.0" mnemonicParsing="false" onMouseClicked="#goToAppointmentsClicked" text="Go to Appointments" />
-                  <Button fx:id="button_logout" layoutX="56.0" layoutY="432.0" mnemonicParsing="false" onMouseClicked="#logoutClicked" text="Logout" />
-                  <Button fx:id="button_search" layoutX="33.0" layoutY="356.0" mnemonicParsing="false" text="Search for Dogs" />
+                  <Button fx:id="button_go_appointments" layoutX="21.0" layoutY="398.0" mnemonicParsing="false" onAction="#goToAppointmentsClicked" text="Go to Appointments" />
+                  <Button fx:id="button_logout" layoutX="56.0" layoutY="432.0" mnemonicParsing="false" onAction="#logoutClicked" text="Logout" />
+                  <Button fx:id="button_search" layoutX="33.0" layoutY="356.0" mnemonicParsing="false" onAction="#searchClicked" text="Search for Dogs" />
                </children></AnchorPane>
-            <Label layoutX="194.0" layoutY="8.0" text="Dogs For Adoption">
+            <Label fx:id="label_title" layoutX="194.0" layoutY="8.0" text="Dogs For Adoption">
                <font>
                   <Font name="Franklin Gothic Heavy" size="48.0" />
                </font>
