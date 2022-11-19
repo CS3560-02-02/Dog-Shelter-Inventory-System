@@ -1,18 +1,18 @@
 package animalshelter;
 
 public class Dog {
-    private int dogID;
+    private String dogID;
     private String name;
-    private int age;
+    private String age;
     private String gender;
-    private double weight;
+    private String weight;
     private String status;
     private String breed;
-    private int fee;
+    private String fee;
 
 
 //Constructor for Dogs
-public Dog(int dogID, String name, int age,String gender, int weight, String stateOfHealth, String status, String breed, int fee){
+public Dog(String dogID, String name, String age,String gender, String weight, String status, String breed, String fee){
     this.dogID = dogID;
     this.name = name;
     this.age = age;
@@ -23,7 +23,7 @@ public Dog(int dogID, String name, int age,String gender, int weight, String sta
     this.fee = fee;
     }
 //getters
-public int getId() {
+public String getId() {
     return dogID;
     }
 
@@ -31,7 +31,7 @@ public String getName() {
     return name;
     }
 
-public int getAge() {
+public String getAge() {
     return age;
     }
 
@@ -39,7 +39,7 @@ public String getGender() {
     return gender;
     }
 
-public double getWeight() {
+public String getWeight() {
     return weight;
     }
 
@@ -51,12 +51,12 @@ public String getbreed() {
     return breed;
     }
 
-public int getFee() {
+public String getFee() {
     return fee;
     }
 
 //setters
-public void setId(int dogID) {
+public void setId(String dogID) {
     this.dogID = dogID;
     }
 
@@ -64,7 +64,7 @@ public void setName(String name) {
     this.name = name;
     }
 
-public void setAge(int age) {
+public void setAge(String age) {
     this.age = age;
     }
 
@@ -72,7 +72,7 @@ public void setGender(String gender) {
     this.gender = gender;
     }    
 
-public void setWeight(double weight) {
+public void setWeight(String weight) {
     this.weight = weight;
     } 
 
@@ -84,7 +84,7 @@ public void setbreed(String breed) {
     this.breed = breed;
     }
 
-public void setFee(int fee) {
+public void setFee(String fee) {
     this.fee = fee;
     }  
 }

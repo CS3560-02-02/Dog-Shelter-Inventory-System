@@ -12,9 +12,13 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ResourceBundle;
 
 import animalshelter.Dog;
+import animalshelter.animalShelterSQL;
 import animalshelter.animalShelterSQL.changeScene;
 
 public class dogController implements Initializable{
@@ -73,27 +77,40 @@ public class dogController implements Initializable{
 
     }
 
+    static ObservableList<Dog> dogList;
 
-    public ObservableList<Dog> generateList(){
-       ObservableList<Dog> dogs = FXCollections.observableArrayList();
-        return dogs;
-    }
+    public static ObservableList<Dog>listDogs(){
+        Connection conn = animalShelterSQL.DbConnector();
+        dogList = FXCollections.observableArrayList();
+        try{
+            PreparedStatement pst = conn.prepareStatement("select * from dog");
+            ResultSet rs = pst.executeQuery();
+    
+            while(rs.next()){
+                dogList.add(new Dog(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8)));
+    
+            }
+        }catch(Exception e){
+            e.setStackTrace(null);
+        }
+         return dogList;
+     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        col_dogID.setCellValueFactory(new PropertyValueFactory<Dog, Integer>("dogID"));
-        col_name.setCellValueFactory(new PropertyValueFactory<Dog, String>("name"));
-        col_age.setCellValueFactory(new PropertyValueFactory<Dog, Integer>("age"));
-        col_gender.setCellValueFactory(new PropertyValueFactory<Dog, String>("gender"));
-        col_weight.setCellValueFactory(new PropertyValueFactory<Dog, Double>("weight"));
-        col_status.setCellValueFactory(new PropertyValueFactory<Dog, String>("status"));
-        col_breed.setCellValueFactory(new PropertyValueFactory<Dog, String>("breed"));
-        col_fee.setCellValueFactory(new PropertyValueFactory<Dog, Integer>("fee"));
+        col_dogID.setCellValueFactory(new PropertyValueFactory<>("dogID"));
+        col_name.setCellValueFactory(new PropertyValueFactory<>("name"));
+        col_age.setCellValueFactory(new PropertyValueFactory<>("age"));
+        col_gender.setCellValueFactory(new PropertyValueFactory<>("gender"));
+        col_weight.setCellValueFactory(new PropertyValueFactory<>("weight"));
+        col_status.setCellValueFactory(new PropertyValueFactory<>("status"));
+        col_breed.setCellValueFactory(new PropertyValueFactory<>("breed"));
+        col_fee.setCellValueFactory(new PropertyValueFactory<>("fee"));
 
 
-        table_dogs.setItems(generateList());
-        
+        table_dogs.setItems(listDogs());
+        table_dogs.setItems(dogList);
 
     }
 

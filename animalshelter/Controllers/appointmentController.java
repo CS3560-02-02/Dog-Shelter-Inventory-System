@@ -37,8 +37,6 @@ public class appointmentController implements Initializable{
     Connection conn= null;
     ResultSet rs = null;
     PreparedStatement pst= null;
-    int index = -1;
-    static ObservableList<Appointment> appointmentList;
 
     @FXML
     private DatePicker datepicker_date;
@@ -174,6 +172,7 @@ public class appointmentController implements Initializable{
     @FXML
     void deleteAppointmentClicked(ActionEvent event) throws IOException{
 
+
     }
 
     @FXML
@@ -181,7 +180,10 @@ public class appointmentController implements Initializable{
 
     }
 
-    public static ObservableList<Appointment>generateList(){
+
+    static ObservableList<Appointment> appointmentList;
+
+    public static ObservableList<Appointment>listAppointments(){
         Connection conn = animalShelterSQL.DbConnector();
         appointmentList = FXCollections.observableArrayList();
         try{
@@ -207,7 +209,7 @@ public class appointmentController implements Initializable{
     col_time.setCellValueFactory(new PropertyValueFactory<>("time"));
     col_reason.setCellValueFactory(new PropertyValueFactory<>("reason"));
 
-    appointmentList = generateList();
+    appointmentList = listAppointments();
     table_appointments.setItems(appointmentList);
     }
 
