@@ -2,9 +2,9 @@ CREATE DATABASE `animalshelter` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE u
 CREATE TABLE `appointment` (
   `appointmentID` int NOT NULL,
   `dogID` int NOT NULL,
-  `date` date NOT NULL,
+  `date` varchar(45) NOT NULL,
   `reason` varchar(45) NOT NULL,
-  `time` time NOT NULL,
+  `time` varchar(45) NOT NULL,
   PRIMARY KEY (`appointmentID`),
   KEY `appointment_DogID_idx` (`dogID`),
   CONSTRAINT `appointment_DogID` FOREIGN KEY (`dogID`) REFERENCES `dog` (`dogID`)
@@ -23,7 +23,7 @@ CREATE TABLE `dog` (
   `name` varchar(45) NOT NULL,
   `age` int NOT NULL,
   `gender` varchar(45) NOT NULL,
-  `weight` double NOT NULL,
+  `weight` varchar(45) NOT NULL,
   `status` varchar(45) NOT NULL,
   `breed` varchar(45) NOT NULL,
   `fee` int NOT NULL,

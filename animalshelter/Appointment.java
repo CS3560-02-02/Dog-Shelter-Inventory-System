@@ -6,30 +6,35 @@ import java.sql.Time;
 
 public class Appointment{
 
-  private int appointmentID;
+  private String appointmentID;
+  private String dogID;
   private Date date;
   private String reason;
-  private Time time;
+  private String time;
 
 //Constructor for Appointments
-public Appointment(int appointmentID, String dogID, Date date, String reason, Time time){
+public Appointment(String appointmentID, String dogID, Date date, String time, String reason){
   this.appointmentID= appointmentID;
   this.date = date;
-  this.reason = reason;
   this.time = time;
+  this.reason = reason;
 }
 
   //getters
 
-  public int getId() {
+  public String getId() {
     return appointmentID;
+    }
+
+    public String dogID(){
+      return dogID;
     }
 
   public Date getDate(){
     return date;
     }
 
-  public Time getTime(){
+  public String getTime(){
     return time;
   }
 
@@ -39,9 +44,13 @@ public Appointment(int appointmentID, String dogID, Date date, String reason, Ti
 
   //setters
 
-  public void setId(int appointmentID) {
+  public void setId(String appointmentID) {
     this.appointmentID = appointmentID;
     } 
+
+  public void setdogID(String dogID){
+    this.dogID = dogID;
+  }
       
   public void setDate(Date date){
     this.date = date;
@@ -51,7 +60,7 @@ public Appointment(int appointmentID, String dogID, Date date, String reason, Ti
     this.reason = reason;
     }
 
-  public void setTime(Time time){
+  public void setTime(String time){
     this.time = time;
     }
 
