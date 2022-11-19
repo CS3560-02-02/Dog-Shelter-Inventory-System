@@ -1,15 +1,17 @@
 package animalshelter;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+
 public class Account {
-    private String name;
-    private String email;
-    private String phone;
-    private String password;
-    private String username;
-    private int customerID;
+    
 
     public void createPassword(String password, String id){
-        
+
     }
     public void createUsername(String username, String id){
 
@@ -19,7 +21,7 @@ public class Account {
     }
 
     public void createCustomerID(){
-        //system will define this
+
     }
 
     public void createEmail(String email, String id){
@@ -35,35 +37,28 @@ public class Account {
     }
 
     //getters
-    public String getName(int customerID){
-        return name;
-    }
-
-    public int getID(String name){
-        //could use any attributes to find the ID
-        return customerID;
-    }
-    
-    public String getPassword(int customerID){
-        return password;
-    }
-
-    public String getEmail(int customerID){
-        return email;
-    }
-
-    public String getPhone(int customerID){
-        return phone;
-    }
-
-    public String getAddress(int customerID){
-        //return the collected string of Address, City, State, Zipcode
-        //needs to be able to return ALL addresses associated with customer ID
+    public String getName(){
         return "";
     }
 
-    public String getUsername(int customerID){
-        return username;
+    public String getID(){
+        return "";
+    }
+
+    public String getPassword(){
+        return "";
+    }
+
+    public String getEmail(){
+        return "";
+    }
+
+    public String getPhone(){
+        return "";
+    }
+
+    public String getAddress(){
+        return "";
     }
 
 }

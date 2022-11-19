@@ -1,6 +1,6 @@
 package animalshelter;
 
-public class Dog {
+public class dog {
     private int dogID;
     private String name;
     private int age;
@@ -13,7 +13,7 @@ public class Dog {
 
 
 //Constructor for Dogs
-public Dog(int dogID, String name, int age,String gender, int weight, String stateOfHealth, String status, String breed, int fee){
+public dog(int dogID, String name, int age,String gender, int weight, String stateOfHealth, String status, String breed, int fee){
     this.dogID = dogID;
     this.name = name;
     this.age = age;
