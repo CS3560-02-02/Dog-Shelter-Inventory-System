@@ -50,9 +50,6 @@ public class dogController implements Initializable{
     private TableColumn<Dog, Double> col_weight;
 
     @FXML
-    private TableColumn<Dog, String> col_state_of_health;
-
-    @FXML
     private TableColumn<Dog, String> col_status;
 
     @FXML

@@ -49,12 +49,11 @@
                 <TableColumn fx:id="col_dogID" prefWidth="44.0" text="Dog ID" />
                 <TableColumn fx:id="col_name" prefWidth="58.0" text="Name" />
                   <TableColumn fx:id="col_age" prefWidth="31.0" text="Age" />
-                  <TableColumn fx:id="col_gender" prefWidth="47.0" text="Gender" />
+                  <TableColumn fx:id="col_gender" prefWidth="52.0" text="Gender" />
                   <TableColumn fx:id="col_weight" prefWidth="53.0" text="Weight" />
-                  <TableColumn fx:id="col_state_of_health" prefWidth="94.0" text="State of Health" />
-                  <TableColumn fx:id="col_status" prefWidth="42.0" text="Status" />
-                  <TableColumn fx:id="col_breed" prefWidth="62.0" text="Breed" />
-                  <TableColumn fx:id="col_fee" prefWidth="36.0" text="Fee" />
+                  <TableColumn fx:id="col_status" prefWidth="45.0" text="Status" />
+                  <TableColumn fx:id="col_breed" prefWidth="136.0" text="Breed" />
+                  <TableColumn fx:id="col_fee" prefWidth="47.0" text="Fee" />
               </columns>
             </TableView>
             <AnchorPane prefHeight="478.0" prefWidth="164.0" style="-fx-background-color: #FFFFFF;">
