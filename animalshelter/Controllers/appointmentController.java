@@ -117,9 +117,6 @@ public class appointmentController implements Initializable{
     @FXML
     void createAppointmentClicked(ActionEvent event) throws IOException, ClassNotFoundException{
 
-        PreparedStatement psInsert = null;
-        PreparedStatement psCheckIdExists = null;
-
         ToggleGroup toggleGroup = new ToggleGroup();
         rb_adopt.setToggleGroup(toggleGroup);
         rb_visit.setToggleGroup(toggleGroup);
@@ -139,14 +136,10 @@ public class appointmentController implements Initializable{
             pst.setInt(1, appointmentID);
             rs = pst.executeQuery();
 
-            if(appointmentID.equals("") && toggleName.equals("") && Time.equals("")&& date.equals("") && dogID.equals("")){
-
-                JOptionPane.showMessageDialog(null, "Fill out all the fields");
-
-            }else if(rs.isBeforeFirst()){
+            if(rs.isBeforeFirst()){
                 JOptionPane.showMessageDialog(null, "Create a different appointment ID (Already exists)");
             }else{
-                pst = conn.prepareStatement("INSERT INTO appointment(appointmentID, dogID, date, reason, time) VALUES (?,?,?,?,?)");
+                pst = conn.prepareStatement("INSERT INTO appointment(appointmentID, dogID, date, time, reason) VALUES (?,?,?,?,?)");
                 pst.setInt(1, appointmentID);
                 pst.setInt(2, dogID);
                 pst.setString(3,formattedDate);
@@ -164,26 +157,18 @@ public class appointmentController implements Initializable{
                     try{
                         rs.close();
                     }catch (SQLException e){
-                        e.printStackTrace();
+                        JOptionPane.showMessageDialog(null, "Error");
                     }
                 }
-                if (psCheckIdExists != null){
+                if (pst != null){
                     try{
                         rs.close();
                     }catch (SQLException e){
-                        e.printStackTrace();
+                        JOptionPane.showMessageDialog(null, "Error");
                     }
-                }
-                if (psInsert != null){
-                    try{
-                        rs.close();
-                    }catch (SQLException e){
-                        e.printStackTrace();
-                    } 
                 }
 
             }
-
         }
 
     @FXML
