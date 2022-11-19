@@ -93,6 +93,7 @@ public class dogController implements Initializable{
 
 
         table_dogs.setItems(generateList());
+        
 
     }
 

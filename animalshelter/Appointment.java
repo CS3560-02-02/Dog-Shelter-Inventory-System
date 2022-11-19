@@ -1,20 +1,18 @@
 package animalshelter;
 
 
-import java.sql.Date;
-import java.sql.Time;
-
 public class Appointment{
 
-  private String appointmentID;
-  private String dogID;
-  private Date date;
+  private Integer appointmentID;
+  private Integer dogID;
+  private String date;
   private String reason;
   private String time;
 
 //Constructor for Appointments
-public Appointment(String appointmentID, String dogID, Date date, String time, String reason){
+public Appointment(Integer appointmentID, Integer dogID, String date, String time, String reason){
   this.appointmentID= appointmentID;
+  this.dogID = dogID;
   this.date = date;
   this.time = time;
   this.reason = reason;
@@ -22,15 +20,15 @@ public Appointment(String appointmentID, String dogID, Date date, String time, S
 
   //getters
 
-  public String getId() {
+  public Integer getId() {
     return appointmentID;
     }
 
-    public String dogID(){
+    public Integer dogID(){
       return dogID;
     }
 
-  public Date getDate(){
+  public String getDate(){
     return date;
     }
 
@@ -44,15 +42,15 @@ public Appointment(String appointmentID, String dogID, Date date, String time, S
 
   //setters
 
-  public void setId(String appointmentID) {
+  public void setId(Integer appointmentID) {
     this.appointmentID = appointmentID;
     } 
 
-  public void setdogID(String dogID){
+  public void setdogID(Integer dogID){
     this.dogID = dogID;
   }
       
-  public void setDate(Date date){
+  public void setDate(String date){
     this.date = date;
     }
 
