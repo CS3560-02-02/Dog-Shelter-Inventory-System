@@ -112,6 +112,8 @@ public class appointmentController implements Initializable{
         changeScene.switchScene(event, "Scenes/dogScene.fxml");
     }
 
+
+    //create and add apointment to mysql database (Done)
     @FXML
     void createAppointmentClicked(ActionEvent event) throws IOException, ClassNotFoundException{
 
@@ -128,6 +130,7 @@ public class appointmentController implements Initializable{
         String Time = tf_time.getText();
         String toggleName = ((RadioButton) toggleGroup.getSelectedToggle()).getText();
 
+        // won't create appointment if user doesn't pick a date
         try{
             Connection conn = animalShelterSQL.DbConnector();
             pst = conn.prepareStatement("select * from appointment where appointmentID =?");
@@ -172,15 +175,21 @@ public class appointmentController implements Initializable{
     @FXML
     void deleteAppointmentClicked(ActionEvent event) throws IOException{
 
+        //needs implementation
 
     }
 
     @FXML
     void updateAppointmentClicked(ActionEvent event) {
 
+        //needs implementation
+
     }
 
 
+
+    // displays tableview for users 
+    //ERROR: won't display appointmentID and dogID columns
     static ObservableList<Appointment> appointmentList;
 
     public static ObservableList<Appointment>listAppointments(){

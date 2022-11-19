@@ -75,7 +75,13 @@ public class dogController implements Initializable{
     @FXML
     void searchClicked(ActionEvent event) {
 
+        //needs implementation
+
     }
+
+
+    //displays tableview of dogs for adoption
+    //ERROR: won't display dogID, status, and breed columns
 
     static ObservableList<Dog> dogList;
 

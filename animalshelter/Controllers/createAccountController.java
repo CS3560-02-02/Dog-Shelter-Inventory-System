@@ -69,6 +69,8 @@ public class createAccountController {
         changeScene.switchScene(event, "Scenes/loginScene.fxml");
     }
 
+
+    //creates and stores new user in mysql database (Done)
     @FXML
     void signupClicked(ActionEvent event) throws ClassNotFoundException {
         String name = tf_name.getText();
