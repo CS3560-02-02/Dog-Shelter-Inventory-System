@@ -55,8 +55,8 @@
                 <TableColumn fx:id="col_appointmentID" prefWidth="102.0" text="Appointment ID" />
                 <TableColumn fx:id="col_dog_name" prefWidth="78.0" text="Dog Name" />
                   <TableColumn fx:id="col_date" minWidth="0.0" prefWidth="72.0" text="Date" />
-                  <TableColumn fx:id="col_time" prefWidth="82.0" text="Time" />
-                  <TableColumn fx:id="col_reason" prefWidth="87.0" text="Reason" />
+                  <TableColumn fx:id="col_time" prefWidth="82.0" text="Reason" />
+                  <TableColumn fx:id="col_reason" prefWidth="87.0" text="Time" />
               </columns>
             </TableView>
             <Label fx:id="label_create_text" layoutX="32.0" layoutY="15.0" text="Create New Appointment">

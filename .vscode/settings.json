@@ -1,5 +1,6 @@
 {
     "java.project.referencedLibraries": [
+        //connect your computer path's javafx jar files instead of mine
         "lib/**/*.jar",
         "c:\\Users\\Aiden\\Desktop\\Javafx\\javafx-sdk-19\\lib\\javafx.base.jar",
         "c:\\Users\\Aiden\\Desktop\\Javafx\\javafx-sdk-19\\lib\\javafx.controls.jar",

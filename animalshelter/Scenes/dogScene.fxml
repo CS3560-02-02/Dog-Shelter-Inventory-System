@@ -48,18 +48,17 @@
               <columns>
                 <TableColumn fx:id="col_dogID" prefWidth="44.0" text="Dog ID" />
                 <TableColumn fx:id="col_name" prefWidth="58.0" text="Name" />
-                  <TableColumn fx:id="col_age" prefWidth="31.0" text="Age" />
+                  <TableColumn fx:id="col_age" prefWidth="36.0" text="Age" />
                   <TableColumn fx:id="col_gender" prefWidth="47.0" text="Gender" />
-                  <TableColumn fx:id="col_weight" prefWidth="53.0" text="Weight" />
-                  <TableColumn fx:id="col_state_of_health" prefWidth="94.0" text="State of Health" />
-                  <TableColumn fx:id="col_status" prefWidth="42.0" text="Status" />
-                  <TableColumn fx:id="col_breed" prefWidth="62.0" text="Breed" />
-                  <TableColumn fx:id="col_fee" prefWidth="36.0" text="Fee" />
+                  <TableColumn fx:id="col_weight" prefWidth="66.0" text="Weight" />
+                  <TableColumn fx:id="col_status" prefWidth="47.0" text="Status" />
+                  <TableColumn fx:id="col_breed" prefWidth="113.0" text="Breed" />
+                  <TableColumn fx:id="col_fee" prefWidth="55.0" text="Fee" />
               </columns>
             </TableView>
             <AnchorPane prefHeight="478.0" prefWidth="164.0" style="-fx-background-color: #FFFFFF;">
                <children>
-                  <Button fx:id="button_go_appointments" layoutX="21.0" layoutY="398.0" mnemonicParsing="false" onAction="#goToAppointmentsClicked" text="Go to Appointments" />
+                  <Button fx:id="button_go_appointments" layoutX="21.0" layoutY="394.0" mnemonicParsing="false" onAction="#goToAppointmentsClicked" text="Go to Appointments" />
                   <Button fx:id="button_logout" layoutX="56.0" layoutY="432.0" mnemonicParsing="false" onAction="#logoutClicked" text="Logout" />
                   <Button fx:id="button_search" layoutX="33.0" layoutY="356.0" mnemonicParsing="false" onAction="#searchClicked" text="Search for Dogs" />
                </children></AnchorPane>

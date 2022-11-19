@@ -1,15 +1,12 @@
 package animalshelter.Controllers;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
-
-import com.mysql.cj.x.protobuf.MysqlxPrepare.Prepare;
-
+import animalshelter.animalShelterSQL;
 import animalshelter.animalShelterSQL.changeScene;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,6 +17,10 @@ import javafx.scene.control.TextField;
 
 
 public class createAccountController {
+
+    Connection conn = null;
+    PreparedStatement pst = null;
+    ResultSet rs = null;
 
     @FXML
     private Button button_login;
@@ -68,14 +69,10 @@ public class createAccountController {
         changeScene.switchScene(event, "Scenes/loginScene.fxml");
     }
 
+
+    //creates and stores new user in mysql database (Done)
     @FXML
     void signupClicked(ActionEvent event) throws ClassNotFoundException {
-
-        Connection conn;
-        PreparedStatement psInsert = null;
-        PreparedStatement psCheckUserExists = null;
-        ResultSet rs = null;
-
         String name = tf_name.getText();
         String email = tf_email.getText();
         String phone = tf_phone.getText();
@@ -83,22 +80,21 @@ public class createAccountController {
         String password = pf_password.getText();
 
         try{
-            Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/animalshelter", "root", "testpass11!Aa");
-            psCheckUserExists = conn.prepareStatement("select * from customer where username =?");
-            psCheckUserExists.setString(1, username);
-            rs = psCheckUserExists.executeQuery();
+            Connection conn = animalShelterSQL.DbConnector();
+            pst = conn.prepareStatement("select * from customer where username =?");
+            pst.setString(1, username);
+            rs = pst.executeQuery();
 
             if(rs.isBeforeFirst()){
                 JOptionPane.showMessageDialog(null, "User already exists");
             }else{
-                psInsert = conn.prepareStatement("INSERT INTO customer(customerEmailID, name,phone, password, username) VALUES (?,?,?,?,?)");
-                psInsert.setString(1, email);
-                psInsert.setString(2, name);
-                psInsert.setString(3, phone);
-                psInsert.setString(4, username);
-                psInsert.setString(5, password);
-                psInsert.executeUpdate();
+                pst = conn.prepareStatement("INSERT INTO customer(customerEmailID, name,phone, password, username) VALUES (?,?,?,?,?)");
+                pst.setString(1, email);
+                pst.setString(2, name);
+                pst.setString(3, phone);
+                pst.setString(4, username);
+                pst.setString(5, password);
+                pst.executeUpdate();
 
                 JOptionPane.showMessageDialog(null, "Account Created!");
 
@@ -114,19 +110,12 @@ public class createAccountController {
                     e.printStackTrace();
                 }
             }
-            if (psCheckUserExists != null){
+            if (pst != null){
                 try{
                     rs.close();
                 }catch (SQLException e){
                     e.printStackTrace();
                 }
-            }
-            if (psInsert != null){
-                try{
-                    rs.close();
-                }catch (SQLException e){
-                    e.printStackTrace();
-                } 
             }
         }
     }
