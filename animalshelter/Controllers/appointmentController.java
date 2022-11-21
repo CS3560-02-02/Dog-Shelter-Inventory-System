@@ -31,12 +31,11 @@ import animalshelter.Appointment;
 import animalshelter.animalShelterSQL;
 import animalshelter.animalShelterSQL.changeScene;
 
+public class appointmentController implements Initializable {
 
-public class appointmentController implements Initializable{
-
-    Connection conn= null;
+    Connection conn = null;
     ResultSet rs = null;
-    PreparedStatement pst= null;
+    PreparedStatement pst = null;
 
     @FXML
     private DatePicker datepicker_date;
@@ -93,10 +92,10 @@ public class appointmentController implements Initializable{
     private TableView<Appointment> table_appointments;
 
     @FXML
-    private TableColumn<Appointment, Integer> col_appointmentID;
+    private TableColumn<Appointment, String> col_appointmentID;
 
     @FXML
-    private TableColumn<Appointment, Integer> col_dog_name;
+    private TableColumn<Appointment, String> col_dog_name;
 
     @FXML
     private TableColumn<Appointment, String> col_reason;
@@ -112,10 +111,9 @@ public class appointmentController implements Initializable{
         changeScene.switchScene(event, "Scenes/dogScene.fxml");
     }
 
-
-    //create and add apointment to mysql database (Done)
+    // create and add apointment to mysql database (Done)
     @FXML
-    void createAppointmentClicked(ActionEvent event) throws IOException, ClassNotFoundException{
+    void createAppointmentClicked(ActionEvent event) throws IOException, ClassNotFoundException {
 
         ToggleGroup toggleGroup = new ToggleGroup();
         rb_adopt.setToggleGroup(toggleGroup);
@@ -123,103 +121,191 @@ public class appointmentController implements Initializable{
 
         rb_adopt.setSelected(true);
 
-        Integer appointmentID = Integer.valueOf(tf_appointmentID.getText());
-        Integer dogID = Integer.valueOf(tf_dog_name.getText());
+        String appointmentID = tf_appointmentID.getText();
+        String dogID = tf_dog_name.getText();
         LocalDate date = datepicker_date.getValue();
         String formattedDate = date.format(DateTimeFormatter.ofPattern("MM-dd-yyyy"));
         String Time = tf_time.getText();
-        String toggleName = ((RadioButton) toggleGroup.getSelectedToggle()).getText();
+        String reason = ((RadioButton) toggleGroup.getSelectedToggle()).getText();
 
         // won't create appointment if user doesn't pick a date
-        try{
+        try {
             Connection conn = animalShelterSQL.DbConnector();
             pst = conn.prepareStatement("select * from appointment where appointmentID =?");
-            pst.setInt(1, appointmentID);
+            pst.setString(1, appointmentID);
             rs = pst.executeQuery();
 
-            if(rs.isBeforeFirst()){
+            if (rs.isBeforeFirst()) {
                 JOptionPane.showMessageDialog(null, "Create a different appointment ID (Already exists)");
-            }else{
-                pst = conn.prepareStatement("INSERT INTO appointment(appointmentID, dogID, date, time, reason) VALUES (?,?,?,?,?)");
-                pst.setInt(1, appointmentID);
-                pst.setInt(2, dogID);
-                pst.setString(3,formattedDate);
+            } else {
+                pst = conn.prepareStatement(
+                        "INSERT INTO appointment(appointmentID, dogID, date, time, reason) VALUES (?,?,?,?,?)");
+                pst.setString(1, appointmentID);
+                pst.setString(2, dogID);
+                pst.setString(3, formattedDate);
                 pst.setString(4, Time);
-                pst.setString(5, toggleName);
+                pst.setString(5, reason);
                 pst.executeUpdate();
-    
+
                 JOptionPane.showMessageDialog(null, "Appointment Created!");
-                }
-
-            }catch(SQLException e){
-                e.printStackTrace();
-            }finally{
-                if (rs != null){
-                    try{
-                        rs.close();
-                    }catch (SQLException e){
-                        JOptionPane.showMessageDialog(null, "Error");
-                    }
-                }
-                if (pst != null){
-                    try{
-                        rs.close();
-                    }catch (SQLException e){
-                        JOptionPane.showMessageDialog(null, "Error");
-                    }
-                }
-
             }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    JOptionPane.showMessageDialog(null, "Error");
+                }
+            }
+            if (pst != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    JOptionPane.showMessageDialog(null, "Error");
+                }
+            }
+
+        }
+    }
+
+    //User enters appointment ID, will delete it from tableview and database (DONE)
+    @FXML
+    void deleteAppointmentClicked(ActionEvent event) throws IOException {
+
+        String appointmentID = tf_appointmentID.getText();
+        try {
+            Connection conn = animalShelterSQL.DbConnector();
+            pst = conn.prepareStatement("select * from appointment where appointmentID =?");
+            pst.setString(1, appointmentID);
+            rs = pst.executeQuery();
+
+            
+            pst = conn.prepareStatement("DELETE FROM appointment WHERE appointmentID= ?");
+            pst.setString(1, appointmentID);
+            pst.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "Appointment Deleted!");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    JOptionPane.showMessageDialog(null, "Error");
+                }
+            }
+            if (pst != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    JOptionPane.showMessageDialog(null, "Error");
+                }
+            }
+
         }
 
-    @FXML
-    void deleteAppointmentClicked(ActionEvent event) throws IOException{
-
-        //needs implementation
-
     }
+
+    //Updates user appointment
+    //ERROR: can't update appointments
 
     @FXML
     void updateAppointmentClicked(ActionEvent event) {
 
-        //needs implementation
+        //want to implement clicking on appointment index in tableview to update
 
+        ToggleGroup toggleGroup = new ToggleGroup();
+        rb_adopt.setToggleGroup(toggleGroup);
+        rb_visit.setToggleGroup(toggleGroup);
+
+        rb_adopt.setSelected(true);
+
+        String appointmentID = tf_appointmentID.getText();
+        String dogID = tf_dog_name.getText();
+        LocalDate date = datepicker_date.getValue();
+        String formattedDate = date.format(DateTimeFormatter.ofPattern("MM-dd-yyyy"));
+        String Time = tf_time.getText();
+        String toggleName = ((RadioButton) toggleGroup.getSelectedToggle()).getText();
+        try {
+            Connection conn = animalShelterSQL.DbConnector();
+            pst = conn.prepareStatement("SELECT * FROM appointment WHERE appointmentID =?");
+            pst.setString(1, appointmentID);
+            rs = pst.executeQuery();
+
+            if (rs.isBeforeFirst()) {
+                JOptionPane.showMessageDialog(null, "Create a different appointment ID (Already exists)");
+            } else {
+                pst = conn.prepareStatement(
+                        "UPDATE appointment SET appointmentID =?, dogID=?, date=?, time=?, reason=?");
+                pst.setString(1, appointmentID);
+                pst.setString(2, dogID);
+                pst.setString(3, formattedDate);
+                pst.setString(4, Time);
+                pst.setString(5, toggleName);
+                pst.executeUpdate();
+
+                JOptionPane.showMessageDialog(null, "Appointment Updated!");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    JOptionPane.showMessageDialog(null, "Error");
+                }
+            }
+            if (pst != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    JOptionPane.showMessageDialog(null, "Error");
+                }
+            }
+
+        }
     }
 
+    // displays tableview for users
+    // ERROR: won't display appointmentID and dogID columns
+    // ERROR:  user can see all appointments in system (need to show appointments for just them)
 
-
-    // displays tableview for users 
-    //ERROR: won't display appointmentID and dogID columns
-    static ObservableList<Appointment> appointmentList;
-
-    public static ObservableList<Appointment>listAppointments(){
+    public static ObservableList<Appointment> listAppointments() {
         Connection conn = animalShelterSQL.DbConnector();
-        appointmentList = FXCollections.observableArrayList();
-        try{
-            PreparedStatement pst = conn.prepareStatement("select * from appointment");
+        ObservableList<Appointment> appointmentList = FXCollections.observableArrayList();
+
+        try {
+            PreparedStatement pst = conn.prepareStatement("SELECT * FROM appointment");
             ResultSet rs = pst.executeQuery();
-    
-            while(rs.next()){
-                appointmentList.add(new Appointment(Integer.valueOf(rs.getString(1)), Integer.valueOf(rs.getString(2)), rs.getString(3), rs.getString(4), rs.getString(5)));
-    
+            Appointment appointments;
+            while (rs.next()) {
+                appointments = new Appointment(rs.getString("appointmentID"), rs.getString("dogID"), rs.getString("date"), rs.getString("time"), rs.getString("reason"));
+                appointmentList.add(appointments);
             }
-        }catch(Exception e){
+        } catch (Exception e) {
             e.setStackTrace(null);
         }
-         return appointmentList;
-     }
+        return appointmentList;
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resource) {
-    
-    col_appointmentID.setCellValueFactory(new PropertyValueFactory<>("appointmentID"));
-    col_dog_name.setCellValueFactory(new PropertyValueFactory<>("dogID"));
-    col_date.setCellValueFactory(new PropertyValueFactory<>("date"));
-    col_time.setCellValueFactory(new PropertyValueFactory<>("time"));
-    col_reason.setCellValueFactory(new PropertyValueFactory<>("reason"));
+        ObservableList<Appointment> list = listAppointments();
 
-    appointmentList = listAppointments();
-    table_appointments.setItems(appointmentList);
+        col_appointmentID.setCellValueFactory(new PropertyValueFactory<>("appointmentID"));
+        col_dog_name.setCellValueFactory(new PropertyValueFactory<>("dogID"));
+        col_date.setCellValueFactory(new PropertyValueFactory<>("date"));
+        col_time.setCellValueFactory(new PropertyValueFactory<>("time"));
+        col_reason.setCellValueFactory(new PropertyValueFactory<>("reason"));
+
+        table_appointments.setItems(list);
     }
 
 }

@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
@@ -23,6 +24,22 @@ import animalshelter.animalShelterSQL.changeScene;
 
 public class dogController implements Initializable{
 
+
+    @FXML
+    private Label label_dogs;
+
+    @FXML
+    private Label label_for;
+
+    @FXML
+    private Label label_adoption;
+
+    @FXML
+    private Label label_search;
+
+    @FXML
+    private TextField tf_search_bar;
+
     @FXML
     private Label label_title;
 
@@ -33,25 +50,25 @@ public class dogController implements Initializable{
     private Button button_logout;
 
     @FXML
-    private Button button_search;
+    private Button button_health;
     
     @FXML
     private TableView<Dog> table_dogs;
 
     @FXML
-    private TableColumn<Dog, Integer> col_dogID;
+    private TableColumn<Dog, String> col_dogID;
 
     @FXML
     private TableColumn<Dog, String> col_name;
 
     @FXML
-    private TableColumn<Dog, Integer> col_age;
+    private TableColumn<Dog, String> col_age;
 
     @FXML
     private TableColumn<Dog, String> col_gender;
 
     @FXML
-    private TableColumn<Dog, Double> col_weight;
+    private TableColumn<Dog, String> col_weight;
 
     @FXML
     private TableColumn<Dog, String> col_status;
@@ -60,7 +77,7 @@ public class dogController implements Initializable{
     private TableColumn<Dog, String> col_breed;
 
     @FXML
-    private TableColumn<Dog, Integer> col_fee;
+    private TableColumn<Dog, String> col_fee;
 
     @FXML
     void goToAppointmentsClicked(ActionEvent event) {
@@ -73,37 +90,46 @@ public class dogController implements Initializable{
     }
 
     @FXML
-    void searchClicked(ActionEvent event) {
-
-        //needs implementation
-
+    void healthClicked(ActionEvent event) {
+        changeScene.switchScene(event, "Scenes/healthScene.fxml");
     }
+
+    @FXML
+    void medicalHistoryClicked(ActionEvent event) {
+        changeScene.switchScene(event, "Scenes/medicalHistoryScene.fxml");
+    }
+
+
+
+    //implement search function
+
 
 
     //displays tableview of dogs for adoption
     //ERROR: won't display dogID, status, and breed columns
 
-    static ObservableList<Dog> dogList;
-
-    public static ObservableList<Dog>listDogs(){
+    public static ObservableList<Dog> listDogs() {
         Connection conn = animalShelterSQL.DbConnector();
-        dogList = FXCollections.observableArrayList();
-        try{
-            PreparedStatement pst = conn.prepareStatement("select * from dog");
+        ObservableList<Dog> dogList = FXCollections.observableArrayList();
+
+        try {
+            PreparedStatement pst = conn.prepareStatement("SELECT * FROM dog");
             ResultSet rs = pst.executeQuery();
-    
-            while(rs.next()){
-                dogList.add(new Dog(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8)));
-    
+            Dog dogs;
+            while (rs.next()) {
+                dogs = new Dog(rs.getString("dogID"), rs.getString("name"), rs.getString("age"), rs.getString("gender"), rs.getString("weight"), rs.getString("status"), rs.getString("breed"), rs.getString("fee"));
+                dogList.add(dogs);
             }
-        }catch(Exception e){
+        } catch (Exception e) {
             e.setStackTrace(null);
         }
-         return dogList;
-     }
+        return dogList;
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        ObservableList<Dog> list = listDogs();
 
         col_dogID.setCellValueFactory(new PropertyValueFactory<>("dogID"));
         col_name.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -114,10 +140,7 @@ public class dogController implements Initializable{
         col_breed.setCellValueFactory(new PropertyValueFactory<>("breed"));
         col_fee.setCellValueFactory(new PropertyValueFactory<>("fee"));
 
-
-        table_dogs.setItems(listDogs());
-        table_dogs.setItems(dogList);
-
+        table_dogs.setItems(list);
     }
 
 }
