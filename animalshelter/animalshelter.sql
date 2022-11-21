@@ -3,11 +3,11 @@ CREATE TABLE `appointment` (
   `appointmentID` varchar(45) NOT NULL,
   `dogID` varchar(45) NOT NULL,
   `date` varchar(45) NOT NULL,
-  `reason` varchar(45) NOT NULL,
   `time` varchar(45) NOT NULL,
+  `reason` varchar(45) NOT NULL,
   PRIMARY KEY (`appointmentID`),
-  KEY `appointment_DogID_idx` (`dogID`),
-  CONSTRAINT `appointment_DogID` FOREIGN KEY (`dogID`) REFERENCES `dog` (`dogID`)
+  KEY `appointment_dogID_idx` (`dogID`),
+  CONSTRAINT `appointment_dogID` FOREIGN KEY (`dogID`) REFERENCES `dog` (`dogID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 CREATE TABLE `customer` (
   `customerEmailID` varchar(45) NOT NULL,
@@ -49,4 +49,3 @@ CREATE TABLE `medicalhistory` (
   KEY `medicalHistory_dogID_idx` (`dogID`),
   CONSTRAINT `medicalHistory_dogID` FOREIGN KEY (`dogID`) REFERENCES `dog` (`dogID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
