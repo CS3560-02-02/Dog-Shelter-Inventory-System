@@ -1,5 +1,7 @@
 package animalshelter;
 
+import java.util.ArrayList;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -21,7 +23,20 @@ public class Account {
     }
 
     public void createCustomerID(){
-
+        //generate unique id
+        int MAX_VALUE = Integer.MAX_VALUE;
+        ArrayList<Integer> idList = new ArrayList<Integer>();
+        int customerID = (int)(Math.random()*(MAX_VALUE - 0)+1);
+        
+        int count = 0;
+        //Boolean exists = false;
+        //check if id is unique
+        while(count < idList.size()){
+            if(customerID == idList.get(count)){
+                createCustomerID();
+            }
+        }
+        idList.add(customerID);
     }
 
     public void createEmail(String email, String id){
