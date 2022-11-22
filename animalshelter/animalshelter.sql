@@ -3,13 +3,12 @@ CREATE TABLE `appointment` (
   `appointmentID` varchar(45) NOT NULL,
   `dogID` varchar(45) NOT NULL,
   `date` varchar(45) NOT NULL,
-  `reason` varchar(45) NOT NULL,
   `time` varchar(45) NOT NULL,
+  `reason` varchar(45) NOT NULL,
   PRIMARY KEY (`appointmentID`),
-  KEY `appointment_DogID_idx` (`dogID`),
-  CONSTRAINT `appointment_DogID` FOREIGN KEY (`dogID`) REFERENCES `dog` (`dogID`)
+  KEY `appointment_dogID_idx` (`dogID`),
+  CONSTRAINT `appointment_dogID` FOREIGN KEY (`dogID`) REFERENCES `dog` (`dogID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
 CREATE TABLE `customer` (
   `customerEmailID` varchar(45) NOT NULL,
   `name` varchar(45) NOT NULL,
@@ -19,7 +18,6 @@ CREATE TABLE `customer` (
   PRIMARY KEY (`customerEmailID`),
   UNIQUE KEY `username_UNIQUE` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
 CREATE TABLE `dog` (
   `dogID` varchar(45) NOT NULL,
   `name` varchar(45) NOT NULL,
@@ -31,7 +29,6 @@ CREATE TABLE `dog` (
   `fee` varchar(45) NOT NULL,
   PRIMARY KEY (`dogID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
 CREATE TABLE `health` (
   `healthID` int NOT NULL,
   `dogID` varchar(45) NOT NULL,
@@ -42,7 +39,6 @@ CREATE TABLE `health` (
   KEY `health_dogID_idx` (`dogID`),
   CONSTRAINT `health_dogID` FOREIGN KEY (`dogID`) REFERENCES `dog` (`dogID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
 CREATE TABLE `medicalhistory` (
   `medicalHistoryID` int NOT NULL,
   `dogID` varchar(45) NOT NULL,
@@ -53,4 +49,3 @@ CREATE TABLE `medicalhistory` (
   KEY `medicalHistory_dogID_idx` (`dogID`),
   CONSTRAINT `medicalHistory_dogID` FOREIGN KEY (`dogID`) REFERENCES `dog` (`dogID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-

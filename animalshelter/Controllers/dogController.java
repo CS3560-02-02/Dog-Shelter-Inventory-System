@@ -17,7 +17,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ResourceBundle;
 
-import animalshelter.dog;
+import animalshelter.Dog;
 import animalshelter.animalShelterSQL;
 import animalshelter.animalShelterSQL.changeScene;
 
@@ -36,31 +36,31 @@ public class dogController implements Initializable{
     private Button button_search;
     
     @FXML
-    private TableView<dog> table_dogs;
+    private TableView<Dog> table_dogs;
 
     @FXML
-    private TableColumn<dog, Integer> col_dogID;
+    private TableColumn<Dog, Integer> col_dogID;
 
     @FXML
-    private TableColumn<dog, String> col_name;
+    private TableColumn<Dog, String> col_name;
 
     @FXML
-    private TableColumn<dog, Integer> col_age;
+    private TableColumn<Dog, Integer> col_age;
 
     @FXML
-    private TableColumn<dog, String> col_gender;
+    private TableColumn<Dog, String> col_gender;
 
     @FXML
-    private TableColumn<dog, Double> col_weight;
+    private TableColumn<Dog, Double> col_weight;
 
     @FXML
-    private TableColumn<dog, String> col_status;
+    private TableColumn<Dog, String> col_status;
 
     @FXML
-    private TableColumn<dog, String> col_breed;
+    private TableColumn<Dog, String> col_breed;
 
     @FXML
-    private TableColumn<dog, Integer> col_fee;
+    private TableColumn<Dog, Integer> col_fee;
 
     @FXML
     void goToAppointmentsClicked(ActionEvent event) {
@@ -83,9 +83,9 @@ public class dogController implements Initializable{
     //displays tableview of dogs for adoption
     //ERROR: won't display dogID, status, and breed columns
 
-    static ObservableList<dog> dogList;
+    static ObservableList<Dog> dogList;
 
-    public static ObservableList<dog>listdogs(){
+    public static ObservableList<Dog>listdogs(){
         Connection conn = animalShelterSQL.DbConnector();
         dogList = FXCollections.observableArrayList();
         try{
@@ -93,7 +93,7 @@ public class dogController implements Initializable{
             ResultSet rs = pst.executeQuery();
     
             while(rs.next()){
-                dogList.add(new dog(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9)));
+                dogList.add(new Dog(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9)));
     
             }
         }catch(Exception e){
