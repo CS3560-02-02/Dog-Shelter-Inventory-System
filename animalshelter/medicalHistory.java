@@ -16,11 +16,11 @@ public class medicalHistory {
   }
 
     // getters
-    public int getMedicalId() {
+    public int getMedicalHistoryID() {
         return medicalHistoryID;
     }
 
-    public String getDogId() {
+    public String getDogID() {
         return dogID;
     }
 
@@ -28,21 +28,21 @@ public class medicalHistory {
         return microchip;
     }
 
-    public String getVaccine() {
+    public String getVaccinated() {
         return vaccinated;
     }
 
-    public String getDate() {
+    public String getDateReceived() {
         return dateReceived;
     }
 
     // setters
 
-    public void setMedicalId(int medicalHistoryID) {
+    public void setMedicalHistoryID(int medicalHistoryID) {
         this.medicalHistoryID = medicalHistoryID;
     }
 
-    public void setdogID(String dogID) {
+    public void setDogID(String dogID) {
         this.dogID = dogID;
     }
 
@@ -50,11 +50,11 @@ public class medicalHistory {
         this.microchip = microchip;
     }
 
-    public void setVaccine(String vaccinated) {
+    public void setVaccinated(String vaccinated) {
         this.vaccinated = vaccinated;
     }
 
-    public void setDate(String dateReceived) {
+    public void setDateReceivedDate(String dateReceived) {
         this.dateReceived = dateReceived;
     }
 

@@ -85,8 +85,7 @@ public class medicalHistoryController implements Initializable{
 
     
 
-     //Shows list of all dog's ID and their medical history
-     //ERROR: dogID, vaccinated, date received column not showing
+     //Shows list of all dog's ID and their medical history(DONE)
 
      public static ObservableList<medicalHistory> medicalHistoryList() {
         Connection conn = animalShelterSQL.DbConnector();

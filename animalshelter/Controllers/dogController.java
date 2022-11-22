@@ -2,6 +2,7 @@ package animalshelter.Controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -18,6 +19,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ResourceBundle;
 
+import animalshelter.Appointment;
 import animalshelter.Dog;
 import animalshelter.animalShelterSQL;
 import animalshelter.animalShelterSQL.changeScene;
@@ -105,42 +107,52 @@ public class dogController implements Initializable{
 
 
 
-    //displays tableview of dogs for adoption
-    //ERROR: won't display dogID, status, and breed columns
+    //displays tableview of dogs for adoption (DONE)
 
-    public static ObservableList<Dog> listDogs() {
-        Connection conn = animalShelterSQL.DbConnector();
-        ObservableList<Dog> dogList = FXCollections.observableArrayList();
-
-        try {
-            PreparedStatement pst = conn.prepareStatement("SELECT * FROM dog");
-            ResultSet rs = pst.executeQuery();
-            Dog dogs;
-            while (rs.next()) {
-                dogs = new Dog(rs.getString("dogID"), rs.getString("name"), rs.getString("age"), rs.getString("gender"), rs.getString("weight"), rs.getString("status"), rs.getString("breed"), rs.getString("fee"));
-                dogList.add(dogs);
-            }
-        } catch (Exception e) {
-            e.setStackTrace(null);
-        }
-        return dogList;
-    }
+    ObservableList<Dog> dogList = FXCollections.observableArrayList();
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    public void initialize(URL location, ResourceBundle resource) {
+        Connection conn = animalShelterSQL.DbConnector();
 
-        ObservableList<Dog> list = listDogs();
+        String dogListQuery = "SELECT dogID, name, age, gender, weight, status, breed, fee FROM dog";
 
-        col_dogID.setCellValueFactory(new PropertyValueFactory<>("dogID"));
-        col_name.setCellValueFactory(new PropertyValueFactory<>("name"));
-        col_age.setCellValueFactory(new PropertyValueFactory<>("age"));
-        col_gender.setCellValueFactory(new PropertyValueFactory<>("gender"));
-        col_weight.setCellValueFactory(new PropertyValueFactory<>("weight"));
-        col_status.setCellValueFactory(new PropertyValueFactory<>("status"));
-        col_breed.setCellValueFactory(new PropertyValueFactory<>("breed"));
-        col_fee.setCellValueFactory(new PropertyValueFactory<>("fee"));
+        try {
 
-        table_dogs.setItems(list);
+            PreparedStatement pst = conn.prepareStatement(dogListQuery);
+            ResultSet rs = pst.executeQuery();
+
+            col_dogID.setCellValueFactory(new PropertyValueFactory<>("dogID"));
+            col_name.setCellValueFactory(new PropertyValueFactory<>("name"));
+            col_age.setCellValueFactory(new PropertyValueFactory<>("age"));
+            col_gender.setCellValueFactory(new PropertyValueFactory<>("gender"));
+            col_weight.setCellValueFactory(new PropertyValueFactory<>("weight"));
+            col_status.setCellValueFactory(new PropertyValueFactory<>("status"));
+            col_breed.setCellValueFactory(new PropertyValueFactory<>("breed"));
+            col_fee.setCellValueFactory(new PropertyValueFactory<>("fee"));
+
+            while (rs.next()) {
+
+                dogList.add(new Dog(rs.getString("dogID"), rs.getString("name"), rs.getString("age"), rs.getString("gender"), rs.getString("weight"), rs.getString("status"), rs.getString("breed"), rs.getString("fee")));
+                
+            }
+
+    
+
+            table_dogs.setItems(dogList);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
-}
+
+        FilteredList<Dog> filteredAppointments = new FilteredList<>(dogList, b -> true);
+
+
+    
+    }
+
+
+
