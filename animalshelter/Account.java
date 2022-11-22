@@ -9,6 +9,9 @@ import javafx.stage.Stage;
 
 public class Account {
     
+    public Account(String id, String username, String password, String name, String email, String phone, String address){
+
+    }
 
     public void createPassword(String password, String id){
 
