@@ -2,49 +2,60 @@ package animalshelter;
 
 public class Health {
     private int healthID;
-    private String affliction;
-    private String medication;
-    private String date;
-    private String discription;
+    private String dogID;
+    private String diseaseType;
+    private String dateContracted;
+    private String needMedication;
 
-    public int getId() {
+    // Constructor for Health
+  public Health(String dogID, String diseaseType, String dateContracted, String needMedication) {
+    this.dogID = dogID;
+    this.diseaseType = diseaseType;
+    this.dateContracted = dateContracted;
+    this.needMedication = needMedication;
+  }
+
+    // getters
+
+    public int getHealthId() {
         return healthID;
     }
-    
-    public void setId(int healthID) {
+
+    public String getDogID(){
+        return dogID;
+    }
+
+    public String getDiseaseType() {
+        return diseaseType;
+    }
+
+    public String getDateContracted() {
+        return dateContracted;
+    }
+
+    public String getNeedMedication() {
+        return needMedication;
+    }
+
+    // setters
+
+    public void setHealthId(int healthID) {
         this.healthID = healthID;
     }
-    
-    public String getAffliction() {
-        return affliction;
-    }
-    
-    public void setAffliction(String affliction) {
-        this.affliction = affliction;
+
+    public void setdogID(String dogID){
+        this.dogID = dogID;
     }
 
-    public String getMedication() {
-        return medication;
-    }
-    
-    public void setMedication(String medication) {
-        this.medication = medication;
+    public void setDiseaseType(String diseaseType) {
+        this.diseaseType = diseaseType;
     }
 
-    public String getDate() {
-        return date;
-    }
-    
-    public void setDate(String date) {
-        this.date = date;
+    public void setDateContracted(String dateContracted) {
+        this.dateContracted = dateContracted;
     }
 
-    public String getDiscription() {
-        return discription;
+    public void setNeedMedication(String needMedication) {
+        this.needMedication = needMedication;
     }
-    
-    public void setDiscription(String discription) {
-        this.discription = discription;
-    }
-    
 }
