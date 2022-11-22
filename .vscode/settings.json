@@ -1,6 +1,5 @@
 {
     "java.project.referencedLibraries": [
-        //connect your computer path's javafx jar files instead of mine
         "lib/**/*.jar",
         "c:\\Users\\Aiden\\Desktop\\Javafx\\javafx-sdk-19\\lib\\javafx.base.jar",
         "c:\\Users\\Aiden\\Desktop\\Javafx\\javafx-sdk-19\\lib\\javafx.controls.jar",
@@ -10,6 +9,15 @@
         "c:\\Users\\Aiden\\Desktop\\Javafx\\javafx-sdk-19\\lib\\javafx.swing.jar",
         "c:\\Users\\Aiden\\Desktop\\Javafx\\javafx-sdk-19\\lib\\javafx.web.jar",
         "c:\\Users\\Aiden\\Desktop\\Javafx\\javafx-sdk-19\\lib\\javafx-swt.jar",
-        "c:\\Users\\Aiden\\Desktop\\mysql-connector-j-8.0.31\\mysql-connector-j-8.0.31.jar"
+        "c:\\Users\\Aiden\\Desktop\\mysql-connector-j-8.0.31\\mysql-connector-j-8.0.31.jar",
+        "c:\\Users\\amyzh\\OneDrive\\Desktop\\Javafx\\javafx-sdk-19\\lib\\javafx.base.jar",
+        "c:\\Users\\amyzh\\OneDrive\\Desktop\\Javafx\\javafx-sdk-19\\lib\\javafx.controls.jar",
+        "c:\\Users\\amyzh\\OneDrive\\Desktop\\Javafx\\javafx-sdk-19\\lib\\javafx.fxml.jar",
+        "c:\\Users\\amyzh\\OneDrive\\Desktop\\Javafx\\javafx-sdk-19\\lib\\javafx.graphics.jar",
+        "c:\\Users\\amyzh\\OneDrive\\Desktop\\Javafx\\javafx-sdk-19\\lib\\javafx.media.jar",
+        "c:\\Users\\amyzh\\OneDrive\\Desktop\\Javafx\\javafx-sdk-19\\lib\\javafx.swing.jar",
+        "c:\\Users\\amyzh\\OneDrive\\Desktop\\Javafx\\javafx-sdk-19\\lib\\javafx.web.jar",
+        "c:\\Users\\amyzh\\OneDrive\\Desktop\\Javafx\\javafx-sdk-19\\lib\\javafx-swt.jar",
+        "c:\\Users\\amyzh\\OneDrive\\Desktop\\mysql-connector-j-8.0.31\\mysql-connector-j-8.0.31\\mysql-connector-j-8.0.31.jar"
     ]
 }

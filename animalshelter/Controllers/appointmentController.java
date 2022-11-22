@@ -132,7 +132,7 @@ public class appointmentController implements Initializable {
         try {
             Connection conn = animalShelterSQL.DbConnector();
             pst = conn.prepareStatement("select * from appointment where dogID =?");
-            pst.setString(1, dogID);
+            pst.setString(1, dogID +1);
             rs = pst.executeQuery();
 
             if (rs.isBeforeFirst()) {
@@ -223,6 +223,7 @@ public class appointmentController implements Initializable {
 
         rb_adopt.setSelected(true);
 
+        String appointmentID = tf_appointmentID.getText();
         String dogID = tf_dog_name.getText();
         LocalDate date = datepicker_date.getValue();
         String formattedDate = date.format(DateTimeFormatter.ofPattern("MM-dd-yyyy"));
@@ -231,12 +232,11 @@ public class appointmentController implements Initializable {
         try {
             Connection conn = animalShelterSQL.DbConnector();
             pst = conn.prepareStatement("SELECT * FROM appointment WHERE appointmentID =?");
-            pst.setString(1, dogID);
+            pst.setString(1, appointmentID);
             rs = pst.executeQuery();
 
             if (rs.isBeforeFirst()) {
-                JOptionPane.showMessageDialog(null, "Create a different appointment ID (Already exists)");
-            } else {
+
                 pst = conn.prepareStatement(
                         "UPDATE appointment SET dogID=?, date=?, time=?, reason=?");
                 pst.setString(1, dogID);
@@ -246,6 +246,8 @@ public class appointmentController implements Initializable {
                 pst.executeUpdate();
 
                 JOptionPane.showMessageDialog(null, "Appointment Updated!");
+            } else {
+                JOptionPane.showMessageDialog(null, "Enter appointment ID already created");
             }
 
         } catch (SQLException e) {
