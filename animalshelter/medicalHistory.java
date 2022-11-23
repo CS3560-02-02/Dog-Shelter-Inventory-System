@@ -8,12 +8,12 @@ public class medicalHistory {
     private String dateReceived;
 
     // Constructor for Health
-  public medicalHistory(String dogID, String microchip, String vaccinated, String dateReceived) {
-    this.dogID = dogID;
-    this.microchip = microchip;
-    this.vaccinated = vaccinated;
-    this.dateReceived = dateReceived;
-  }
+    public medicalHistory(String dogID, String microchip, String vaccinated, String dateReceived) {
+        this.dogID = dogID;
+        this.microchip = microchip;
+        this.vaccinated = vaccinated;
+        this.dateReceived = dateReceived;
+    }
 
     // getters
     public int getMedicalHistoryID() {

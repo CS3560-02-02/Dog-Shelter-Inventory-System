@@ -120,8 +120,6 @@ public class appointmentController implements Initializable {
         rb_adopt.setToggleGroup(toggleGroup);
         rb_visit.setToggleGroup(toggleGroup);
 
-        rb_adopt.setSelected(true);
-
         String dogID = tf_dog_name.getText();
         LocalDate date = datepicker_date.getValue();
         String formattedDate = date.format(DateTimeFormatter.ofPattern("MM-dd-yyyy"));

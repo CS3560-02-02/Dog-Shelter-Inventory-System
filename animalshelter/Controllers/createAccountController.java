@@ -88,7 +88,7 @@ public class createAccountController {
             if(rs.isBeforeFirst()){
                 JOptionPane.showMessageDialog(null, "User already exists");
             }else{
-                pst = conn.prepareStatement("INSERT INTO customer(customerEmailID, name,phone, password, username) VALUES (?,?,?,?,?)");
+                pst = conn.prepareStatement("INSERT INTO customer(email, name, phone, password, username) VALUES (?,?,?,?,?)");
                 pst.setString(1, email);
                 pst.setString(2, name);
                 pst.setString(3, phone);
