@@ -180,6 +180,7 @@ public class appointmentController implements Initializable {
     }
 
     // Updates user appointment (DONE)
+    //Need to click on specific appointment row along with updating info to work
 
     @FXML
     void updateAppointmentClicked(ActionEvent event) {
@@ -226,9 +227,7 @@ public class appointmentController implements Initializable {
         }
     }
 
-    // displays tableview for users
-    // ERROR: user can see all appointments in system (need to show appointments for
-    // just them)
+    // displays tableview for users based on their valid email (DONE)
 
     ObservableList<Appointment> appointmentList = FXCollections.observableArrayList();
 

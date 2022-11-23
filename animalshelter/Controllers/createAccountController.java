@@ -70,7 +70,7 @@ public class createAccountController {
     }
 
 
-    //creates and stores new user in mysql database (Done)
+    //creates and stores new user in mysql database (DONE)
     @FXML
     void signupClicked(ActionEvent event) throws ClassNotFoundException {
         String name = tf_name.getText();
