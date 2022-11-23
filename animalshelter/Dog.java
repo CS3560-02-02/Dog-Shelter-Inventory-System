@@ -12,7 +12,7 @@ public class Dog {
 
 
 //Constructor for Dogs
-public Dog(String dogID, String name, String age,String gender, String weight, String stateOfHealth, String status, String breed, String fee){
+public Dog(String dogID, String name, String age,String gender, String weight, String status, String breed, String fee){
     this.dogID = dogID;
     this.name = name;
     this.age = age;
