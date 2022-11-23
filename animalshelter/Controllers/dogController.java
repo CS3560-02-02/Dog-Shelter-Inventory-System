@@ -12,14 +12,11 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ResourceBundle;
-
-import animalshelter.Appointment;
 import animalshelter.Dog;
 import animalshelter.animalShelterSQL;
 import animalshelter.animalShelterSQL.changeScene;
