@@ -1,7 +1,7 @@
 package animalshelter;
 
-public class dog {
-    private int dogID;
+public class Dog {
+    private String dogID;
     private String name;
     private String age;
     private String gender;
@@ -12,7 +12,7 @@ public class dog {
 
 
 //Constructor for Dogs
-public dog(int dogID, String name, int age,String gender, int weight, String stateOfHealth, String status, String breed, int fee){
+public Dog(String dogID, String name, String age,String gender, String weight, String status, String breed, String fee){
     this.dogID = dogID;
     this.name = name;
     this.age = age;
@@ -23,7 +23,7 @@ public dog(int dogID, String name, int age,String gender, int weight, String sta
     this.fee = fee;
     }
 //getters
-public String getId() {
+public String getDogID() {
     return dogID;
     }
 
@@ -43,11 +43,11 @@ public String getWeight() {
     return weight;
     }
 
-public String getstatus() {
+public String getStatus() {
     return status;
     }
 
-public String getbreed() {
+public String getBreed() {
     return breed;
     }
 
@@ -56,7 +56,7 @@ public String getFee() {
     }
 
 //setters
-public void setId(String dogID) {
+public void setDogID(String dogID) {
     this.dogID = dogID;
     }
 
@@ -76,11 +76,11 @@ public void setWeight(String weight) {
     this.weight = weight;
     } 
 
-public void setstatus(String status) {
+public void setStatus(String status) {
     this.status = status;
     }
 
-public void setbreed(String breed) {
+public void setBreed(String breed) {
     this.breed = breed;
     }
 

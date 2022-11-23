@@ -46,7 +46,6 @@ public class animalShelterSQL {
 }   
 
 
-
     //private static final String userName = "root";
     //private static final String password = "testpass11!Aa";
     //private static final String url = "jdbc:mysql://localhost:3306/animalshelter";

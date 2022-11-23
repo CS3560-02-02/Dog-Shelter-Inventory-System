@@ -2,6 +2,7 @@ package animalshelter.Controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -9,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
@@ -17,11 +19,28 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ResourceBundle;
 
-import animalshelter.dog;
+import animalshelter.Appointment;
+import animalshelter.Dog;
 import animalshelter.animalShelterSQL;
 import animalshelter.animalShelterSQL.changeScene;
 
 public class dogController implements Initializable{
+
+
+    @FXML
+    private Label label_dogs;
+
+    @FXML
+    private Label label_for;
+
+    @FXML
+    private Label label_adoption;
+
+    @FXML
+    private Label label_search;
+
+    @FXML
+    private TextField tf_search_bar;
 
     @FXML
     private Label label_title;
@@ -33,34 +52,34 @@ public class dogController implements Initializable{
     private Button button_logout;
 
     @FXML
-    private Button button_search;
+    private Button button_health;
     
     @FXML
-    private TableView<dog> table_dogs;
+    private TableView<Dog> table_dogs;
 
     @FXML
-    private TableColumn<dog, Integer> col_dogID;
+    private TableColumn<Dog, String> col_dogID;
 
     @FXML
-    private TableColumn<dog, String> col_name;
+    private TableColumn<Dog, String> col_name;
 
     @FXML
-    private TableColumn<dog, Integer> col_age;
+    private TableColumn<Dog, String> col_age;
 
     @FXML
-    private TableColumn<dog, String> col_gender;
+    private TableColumn<Dog, String> col_gender;
 
     @FXML
-    private TableColumn<dog, Double> col_weight;
+    private TableColumn<Dog, String> col_weight;
 
     @FXML
-    private TableColumn<dog, String> col_status;
+    private TableColumn<Dog, String> col_status;
 
     @FXML
-    private TableColumn<dog, String> col_breed;
+    private TableColumn<Dog, String> col_breed;
 
     @FXML
-    private TableColumn<dog, Integer> col_fee;
+    private TableColumn<Dog, String> col_fee;
 
     @FXML
     void goToAppointmentsClicked(ActionEvent event) {
@@ -73,51 +92,64 @@ public class dogController implements Initializable{
     }
 
     @FXML
-    void searchClicked(ActionEvent event) {
+    void healthClicked(ActionEvent event) {
+        changeScene.switchScene(event, "Scenes/healthScene.fxml");
+    }
 
-        //needs implementation
-
+    @FXML
+    void medicalHistoryClicked(ActionEvent event) {
+        changeScene.switchScene(event, "Scenes/medicalHistoryScene.fxml");
     }
 
 
-    //displays tableview of dogs for adoption
-    //ERROR: won't display dogID, status, and breed columns
 
-    static ObservableList<dog> dogList;
+    //implement search function
 
-    public static ObservableList<dog>listdogs(){
-        Connection conn = animalShelterSQL.DbConnector();
-        dogList = FXCollections.observableArrayList();
-        try{
-            PreparedStatement pst = conn.prepareStatement("select * from dog");
-            ResultSet rs = pst.executeQuery();
-    
-            while(rs.next()){
-                dogList.add(new dog(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8)));
-    
-            }
-        }catch(Exception e){
-            e.setStackTrace(null);
-        }
-         return dogList;
-     }
+
+
+    //displays tableview of dogs for adoption (DONE)
+
+    ObservableList<Dog> dogList = FXCollections.observableArrayList();
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    public void initialize(URL location, ResourceBundle resource) {
+        Connection conn = animalShelterSQL.DbConnector();
 
-        col_dogID.setCellValueFactory(new PropertyValueFactory<>("dogID"));
-        col_name.setCellValueFactory(new PropertyValueFactory<>("name"));
-        col_age.setCellValueFactory(new PropertyValueFactory<>("age"));
-        col_gender.setCellValueFactory(new PropertyValueFactory<>("gender"));
-        col_weight.setCellValueFactory(new PropertyValueFactory<>("weight"));
-        col_status.setCellValueFactory(new PropertyValueFactory<>("status"));
-        col_breed.setCellValueFactory(new PropertyValueFactory<>("breed"));
-        col_fee.setCellValueFactory(new PropertyValueFactory<>("fee"));
+        String dogListQuery = "SELECT dogID, name, age, gender, weight, status, breed, fee FROM dog";
 
+        try {
 
-        table_dogs.setItems(listdogs());
-        table_dogs.setItems(dogList);
+            PreparedStatement pst = conn.prepareStatement(dogListQuery);
+            ResultSet rs = pst.executeQuery();
+
+            col_dogID.setCellValueFactory(new PropertyValueFactory<>("dogID"));
+            col_name.setCellValueFactory(new PropertyValueFactory<>("name"));
+            col_age.setCellValueFactory(new PropertyValueFactory<>("age"));
+            col_gender.setCellValueFactory(new PropertyValueFactory<>("gender"));
+            col_weight.setCellValueFactory(new PropertyValueFactory<>("weight"));
+            col_status.setCellValueFactory(new PropertyValueFactory<>("status"));
+            col_breed.setCellValueFactory(new PropertyValueFactory<>("breed"));
+            col_fee.setCellValueFactory(new PropertyValueFactory<>("fee"));
+
+            while (rs.next()) {
+
+                dogList.add(new Dog(rs.getString("dogID"), rs.getString("name"), rs.getString("age"), rs.getString("gender"), rs.getString("weight"), rs.getString("status"), rs.getString("breed"), rs.getString("fee")));
+                
+            }
+
+    
+
+            table_dogs.setItems(dogList);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 
-}
+
+        FilteredList<Dog> filteredAppointments = new FilteredList<>(dogList, b -> true);
+
+
+    
+    }

@@ -1,7 +1,6 @@
 package animalshelter;
 
 import java.io.IOException;
-import java.sql.Connection;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -24,7 +23,7 @@ public class animalShelterGUI extends Application {
    }
 
 
-
+   
    public void changeScene(String fxml) throws IOException{
        Parent pane = FXMLLoader.load(getClass().getResource(fxml));
        stg.getScene().setRoot(pane);
