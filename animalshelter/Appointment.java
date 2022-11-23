@@ -3,13 +3,15 @@ package animalshelter;
 public class Appointment {
 
   private Integer appointmentID;
+  private String email;
   private String dogID;
   private String date;
   private String reason;
   private String time;
 
   // Constructor for Appointments
-  public Appointment(Integer appointmentID, String dogID, String date, String time, String reason) {
+  public Appointment(String email, Integer appointmentID, String dogID, String date, String time, String reason) {
+    this.email = email;
     this.appointmentID = appointmentID;
     this.dogID = dogID;
     this.date = date;
@@ -18,6 +20,10 @@ public class Appointment {
   }
 
   // getters
+
+  public String getEmail() {
+    return email;
+  }
 
   public Integer getAppointmentID() {
     return appointmentID;
@@ -40,6 +46,10 @@ public class Appointment {
   }
 
   // setters
+
+  public void setEmail(String email) {
+    this.email = email;
+  }
 
   public void setAppointmentID(Integer appointmentID) {
     this.appointmentID = appointmentID;

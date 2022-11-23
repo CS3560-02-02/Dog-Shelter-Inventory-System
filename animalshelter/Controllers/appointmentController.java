@@ -46,6 +46,9 @@ public class appointmentController implements Initializable {
     private Label label_create_text;
 
     @FXML
+    private Label label_customerEmail;
+
+    @FXML
     private Label label_date;
 
     @FXML
@@ -73,6 +76,9 @@ public class appointmentController implements Initializable {
     private TextField tf_time;
 
     @FXML
+    private TextField tf_email;
+
+    @FXML
     private Button button_adoptionPage;
 
     @FXML
@@ -86,6 +92,9 @@ public class appointmentController implements Initializable {
 
     @FXML
     private TableView<Appointment> table_appointments;
+
+    @FXML
+    private TableColumn<Appointment, String> col_email;
 
     @FXML
     private TableColumn<Appointment, Integer> col_appointmentID;
@@ -115,6 +124,7 @@ public class appointmentController implements Initializable {
         rb_adopt.setToggleGroup(toggleGroup);
         rb_visit.setToggleGroup(toggleGroup);
 
+        String email = tf_email.getText();
         String dogID = tf_dog_name.getText();
         LocalDate date = datepicker_date.getValue();
         String formattedDate = date.format(DateTimeFormatter.ofPattern("MM-dd-yyyy"));
@@ -124,22 +134,24 @@ public class appointmentController implements Initializable {
         // won't create appointment if user doesn't pick a date
         try {
             Connection conn = animalShelterSQL.DbConnector();
-            pst = conn.prepareStatement("select * from appointment where dogID =?");
-            pst.setString(1, dogID);
+
+            pst = conn.prepareStatement("SELECT * FROM customer WHERE email =?");
+            pst.setString(1, email);
             rs = pst.executeQuery();
 
             if (rs.isBeforeFirst()) {
-                JOptionPane.showMessageDialog(null, "Create a different appointment ID (Already exists)");
-            } else {
                 pst = conn.prepareStatement(
-                        "INSERT INTO appointment(dogID, date, time, reason) VALUES (?,?,?,?)");
-                pst.setString(1, dogID);
-                pst.setString(2, formattedDate);
-                pst.setString(3, Time);
-                pst.setString(4, reason);
+                        "INSERT INTO appointment(email, dogID, date, time, reason) VALUES (?,?,?,?,?)");
+                pst.setString(1, email);
+                pst.setString(2, dogID);
+                pst.setString(3, formattedDate);
+                pst.setString(4, Time);
+                pst.setString(5, reason);
                 pst.executeUpdate();
 
                 JOptionPane.showMessageDialog(null, "Appointment Created!");
+            } else {
+                JOptionPane.showMessageDialog(null, "Cannot make appointment (User doesn't exist)");
             }
 
         } catch (SQLException e) {
@@ -151,9 +163,8 @@ public class appointmentController implements Initializable {
     @FXML
     void deleteAppointmentClicked(ActionEvent event) throws IOException {
 
-        myIndex =table_appointments.getSelectionModel().getSelectedIndex();
+        myIndex = table_appointments.getSelectionModel().getSelectedIndex();
         id = Integer.parseInt(String.valueOf(table_appointments.getItems().get(myIndex).getAppointmentID()));
-
 
         try {
             Connection conn = animalShelterSQL.DbConnector();
@@ -173,33 +184,46 @@ public class appointmentController implements Initializable {
     @FXML
     void updateAppointmentClicked(ActionEvent event) {
 
-       myIndex =table_appointments.getSelectionModel().getSelectedIndex();
-       id = Integer.parseInt(String.valueOf(table_appointments.getItems().get(myIndex).getAppointmentID()));
+        myIndex = table_appointments.getSelectionModel().getSelectedIndex();
+        id = Integer.parseInt(String.valueOf(table_appointments.getItems().get(myIndex).getAppointmentID()));
 
-       ToggleGroup toggleGroup = new ToggleGroup();
-       rb_adopt.setToggleGroup(toggleGroup);
-       rb_visit.setToggleGroup(toggleGroup);
+        ToggleGroup toggleGroup = new ToggleGroup();
+        rb_adopt.setToggleGroup(toggleGroup);
+        rb_visit.setToggleGroup(toggleGroup);
 
-       String dogID = tf_dog_name.getText();
-       LocalDate date = datepicker_date.getValue();
-       String formattedDate = date.format(DateTimeFormatter.ofPattern("MM-dd-yyyy"));
-       String Time = tf_time.getText();
-       String toggleName = ((RadioButton) toggleGroup.getSelectedToggle()).getText();
-       try {
-           Connection conn = animalShelterSQL.DbConnector();
-            pst = conn.prepareStatement("UPDATE appointment SET dogID=?, date=?, time=?, reason=? where appointmentID =?");
-            pst.setString(1, dogID);
-            pst.setString(2, formattedDate);
-            pst.setString(3, Time);
-            pst.setString(4, toggleName);
-            pst.setInt(5, id);
-            pst.executeUpdate();
+        String email = tf_email.getText();
+        String dogID = tf_dog_name.getText();
+        LocalDate date = datepicker_date.getValue();
+        String formattedDate = date.format(DateTimeFormatter.ofPattern("MM-dd-yyyy"));
+        String Time = tf_time.getText();
+        String toggleName = ((RadioButton) toggleGroup.getSelectedToggle()).getText();
+        try {
+            Connection conn = animalShelterSQL.DbConnector();
 
-            JOptionPane.showMessageDialog(null, "Appointment Updated!");
+            pst = conn.prepareStatement("SELECT * FROM customer WHERE email =?");
+            pst.setString(1, email);
+            rs = pst.executeQuery();
 
-       } catch (SQLException e) {
-           e.printStackTrace();
-       }
+            if (rs.isBeforeFirst()) {
+                pst = conn.prepareStatement(
+                        "UPDATE appointment SET email=?, dogID=?, date=?, time=?, reason=? where appointmentID =?");
+                pst.setString(1, email);
+                pst.setString(2, dogID);
+                pst.setString(3, formattedDate);
+                pst.setString(4, Time);
+                pst.setString(5, toggleName);
+                pst.setInt(6, id);
+                pst.executeUpdate();
+
+                JOptionPane.showMessageDialog(null, "Appointment Updated!");
+            } else {
+                JOptionPane.showMessageDialog(null, "ERROR TRY AGAIN");
+
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     // displays tableview for users
@@ -212,7 +236,7 @@ public class appointmentController implements Initializable {
     public void initialize(URL location, ResourceBundle resource) {
         Connection conn = animalShelterSQL.DbConnector();
 
-        String appointmentListQuery = "SELECT appointmentID, dogID, date, time, reason FROM appointment";
+        String appointmentListQuery = "SELECT email, appointmentID, dogID, date, time, reason FROM appointment";
 
         try {
             PreparedStatement pst = conn.prepareStatement(appointmentListQuery);
@@ -220,10 +244,12 @@ public class appointmentController implements Initializable {
 
             while (rs.next()) {
 
-                appointmentList.add(new Appointment(rs.getInt("appointmentID"), rs.getString("dogID"),
-                        rs.getString("date"), rs.getString("time"), rs.getString("reason")));
+                appointmentList
+                        .add(new Appointment(rs.getString("email"), rs.getInt("appointmentID"), rs.getString("dogID"),
+                                rs.getString("date"), rs.getString("time"), rs.getString("reason")));
             }
 
+            col_email.setCellValueFactory(new PropertyValueFactory<>("email"));
             col_appointmentID.setCellValueFactory(new PropertyValueFactory<>("appointmentID"));
             col_dog_name.setCellValueFactory(new PropertyValueFactory<>("dogID"));
             col_date.setCellValueFactory(new PropertyValueFactory<>("date"));
