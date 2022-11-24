@@ -10,10 +10,7 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class Account {
-    
-    public Account(String id, String username, String password, String name, String email, String phone, String address){
-
-    }
+    int customerID;
 
     public void createPassword(String password, String id){
 
@@ -26,20 +23,7 @@ public class Account {
     }
 
     public void createCustomerID(){
-        //generate unique id
-        int MAX_VALUE = Integer.MAX_VALUE;
-        ArrayList<Integer> idList = new ArrayList<Integer>();
-        int customerID = (int)(Math.random()*(MAX_VALUE - 0)+1);
-        
-        int count = 0;
-        //Boolean exists = false;
-        //check if id is unique
-        while(count < idList.size()){
-            if(customerID == idList.get(count)){
-                createCustomerID();
-            }
-        }
-        idList.add(customerID);
+
     }
 
     public void createEmail(String email, String id){
@@ -60,7 +44,8 @@ public class Account {
     }
 
     public String getID(){
-        return "";
+        String id = ""+this.customerID;
+        return id;
     }
 
     public String getPassword(){

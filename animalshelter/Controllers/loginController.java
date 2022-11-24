@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import javax.swing.JOptionPane;
 
 import animalshelter.animalShelterSQL.changeScene;
@@ -63,7 +64,7 @@ public class loginController{
 
             try{
                 Class.forName("com.mysql.jdbc.Driver");
-                conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/animalshelter", "root", "testpass11!Aa");
+                conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/animalshelter", "root", "1234");
                 pst = conn.prepareStatement("select * from customer where username =? and password=?");
 
                 pst.setString(1, username);

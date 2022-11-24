@@ -1,4 +1,15 @@
-CREATE DATABASE `animalshelter` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+#CREATE DATABASE `animalshelter` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+CREATE TABLE `dog` (
+  `dogID` varchar(45) NOT NULL,
+  `name` varchar(45) NOT NULL,
+  `age` varchar(45) NOT NULL,
+  `gender` varchar(45) NOT NULL,
+  `weight` varchar(45) NOT NULL,
+  `status` varchar(45) NOT NULL,
+  `breed` varchar(45) NOT NULL,
+  `fee` varchar(45) NOT NULL,
+  PRIMARY KEY (`dogID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 CREATE TABLE `appointment` (
   `appointmentID` varchar(45) NOT NULL,
   `dogID` varchar(45) NOT NULL,
@@ -18,17 +29,7 @@ CREATE TABLE `customer` (
   PRIMARY KEY (`customerEmailID`),
   UNIQUE KEY `username_UNIQUE` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-CREATE TABLE `dog` (
-  `dogID` varchar(45) NOT NULL,
-  `name` varchar(45) NOT NULL,
-  `age` varchar(45) NOT NULL,
-  `gender` varchar(45) NOT NULL,
-  `weight` varchar(45) NOT NULL,
-  `status` varchar(45) NOT NULL,
-  `breed` varchar(45) NOT NULL,
-  `fee` varchar(45) NOT NULL,
-  PRIMARY KEY (`dogID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 CREATE TABLE `health` (
   `healthID` int NOT NULL,
   `dogID` varchar(45) NOT NULL,
