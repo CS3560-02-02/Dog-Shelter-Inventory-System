@@ -1,14 +1,14 @@
 package animalshelter;
 
 public class Health {
-    private int healthID;
-    private String dogID;
+    private Integer healthID;
+    private Integer dogID;
     private String diseaseType;
     private String dateContracted;
     private String needMedication;
 
     // Constructor for Health
-    public Health(String dogID, String diseaseType, String dateContracted, String needMedication) {
+    public Health(Integer dogID, String diseaseType, String dateContracted, String needMedication) {
         this.dogID = dogID;
         this.diseaseType = diseaseType;
         this.dateContracted = dateContracted;
@@ -17,11 +17,11 @@ public class Health {
 
     // getters
 
-    public int getHealthId() {
+    public Integer getHealthId() {
         return healthID;
     }
 
-    public String getDogID() {
+    public Integer getDogID() {
         return dogID;
     }
 
@@ -43,7 +43,7 @@ public class Health {
         this.healthID = healthID;
     }
 
-    public void setdogID(String dogID) {
+    public void setdogID(Integer dogID) {
         this.dogID = dogID;
     }
 

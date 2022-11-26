@@ -12,6 +12,8 @@ import animalshelter.medicalHistory;
 import animalshelter.animalShelterSQL.changeScene;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -81,40 +83,63 @@ public class medicalHistoryController implements Initializable{
     }
 
 
-    //implement search function 
-
-    
-
-     //Shows list of all dog's ID and their medical history(DONE)
-
-     public static ObservableList<medicalHistory> medicalHistoryList() {
+    ObservableList<medicalHistory> medicalHistoryList = FXCollections.observableArrayList();
+    //Shows list of all dog's medical history (DONE)
+    public void searchMedicalHistory(){
         Connection conn = animalShelterSQL.DbConnector();
-        ObservableList<medicalHistory> healthList = FXCollections.observableArrayList();
+
+        String medicalHistoryQuery = "SELECT * FROM medicalhistory";
 
         try {
-            PreparedStatement pst = conn.prepareStatement("SELECT * FROM medicalhistory");
+
+            PreparedStatement pst = conn.prepareStatement(medicalHistoryQuery);
             ResultSet rs = pst.executeQuery();
-            medicalHistory medicalHistory;
+
             while (rs.next()) {
-                medicalHistory = new medicalHistory(rs.getString("dogID"), rs.getString("microchip"), rs.getString("vaccinated"), rs.getString("dateReceived"));
-                healthList.add(medicalHistory);
+                medicalHistoryList.add(new medicalHistory(rs.getInt("dogID"), rs.getString("microchip"), rs.getString("vaccinated"), rs.getString("dateReceived")));
             }
+
+            col_dogID.setCellValueFactory(new PropertyValueFactory<>("dogID"));
+            col_microchip.setCellValueFactory(new PropertyValueFactory<>("microchip"));
+            col_vaccinated.setCellValueFactory(new PropertyValueFactory<>("vaccinated"));
+            col_date_vaccination.setCellValueFactory(new PropertyValueFactory<>("dateReceived"));
+
+            FilteredList<medicalHistory> filterMedicalHistory = new FilteredList<>(medicalHistoryList, b -> true);
+            tf_search.textProperty().addListener((observable, oldValue, newValue) -> {
+                filterMedicalHistory.setPredicate(medicalHistory -> {
+                    // if filter text is empty, display all health records
+                    if (newValue == null || newValue.isEmpty()) {
+                        return true;
+                    }
+                    
+                    // compare text
+                    String lowerCaseFilter = newValue.toLowerCase();
+                    
+                    if (String.valueOf(medicalHistory.getDogID()).toLowerCase().contains(lowerCaseFilter)) {
+                        return true; // filter matches dog ID
+                    }
+                    else if (medicalHistory.getMicrochip().toLowerCase().contains(lowerCaseFilter)) {
+                        return true; // filter matches microchip info
+                    }
+                    else if (medicalHistory.getVaccinated().toLowerCase().contains(lowerCaseFilter)) {
+                        return true; // filter matches vaccinated info
+                    }
+                    return false; // does not match.
+                });
+            });
+
+            SortedList<medicalHistory> sortHealth = new SortedList<>(filterMedicalHistory);
+            sortHealth.comparatorProperty().bind(table_medical_history.comparatorProperty());
+            table_medical_history.setItems(sortHealth);
+
         } catch (Exception e) {
-            e.setStackTrace(null);
+            e.printStackTrace();
         }
-        return healthList;
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        ObservableList<medicalHistory> list = medicalHistoryList();
-
-        col_dogID.setCellValueFactory(new PropertyValueFactory<>("dogID"));
-        col_microchip.setCellValueFactory(new PropertyValueFactory<>("microchip"));
-        col_vaccinated.setCellValueFactory(new PropertyValueFactory<>("vaccinated"));
-        col_date_vaccination.setCellValueFactory(new PropertyValueFactory<>("dateReceived"));
-
-        table_medical_history.setItems(list);
+        searchMedicalHistory();
         
     }
 

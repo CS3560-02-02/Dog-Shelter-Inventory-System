@@ -1,7 +1,7 @@
 package animalshelter;
 
 public class Dog {
-    private String dogID;
+    private Integer dogID;
     private String name;
     private String age;
     private String gender;
@@ -11,7 +11,7 @@ public class Dog {
     private String fee;
 
     // Constructor for Dogs
-    public Dog(String dogID, String name, String age, String gender, String weight, String status, String breed,
+    public Dog(Integer dogID, String name, String age, String gender, String weight, String status, String breed,
             String fee) {
         this.dogID = dogID;
         this.name = name;
@@ -24,7 +24,7 @@ public class Dog {
     }
 
     // getters
-    public String getDogID() {
+    public Integer getDogID() {
         return dogID;
     }
 
@@ -57,7 +57,7 @@ public class Dog {
     }
 
     // setters
-    public void setDogID(String dogID) {
+    public void setDogID(Integer dogID) {
         this.dogID = dogID;
     }
 

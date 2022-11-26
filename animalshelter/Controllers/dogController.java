@@ -3,6 +3,7 @@ package animalshelter.Controllers;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -99,25 +100,26 @@ public class dogController implements Initializable{
     }
 
 
-
-    //implement search function
-
-
-
-    //displays tableview of dogs for adoption (DONE)
+    //displays tableview of dogs for adoption with search function(DONE)
 
     ObservableList<Dog> dogList = FXCollections.observableArrayList();
 
-    @Override
-    public void initialize(URL location, ResourceBundle resource) {
+
+    public void searchDog(){
         Connection conn = animalShelterSQL.DbConnector();
 
-        String dogListQuery = "SELECT dogID, name, age, gender, weight, status, breed, fee FROM dog";
+        String dogListQuery = "SELECT * FROM dog";
 
         try {
 
             PreparedStatement pst = conn.prepareStatement(dogListQuery);
             ResultSet rs = pst.executeQuery();
+
+            while (rs.next()) {
+
+                dogList.add(new Dog(rs.getInt("dogID"), rs.getString("name"), rs.getString("age"), rs.getString("gender"), rs.getString("weight"), rs.getString("status"), rs.getString("breed"), rs.getString("fee")));
+                
+            }
 
             col_dogID.setCellValueFactory(new PropertyValueFactory<>("dogID"));
             col_name.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -128,27 +130,56 @@ public class dogController implements Initializable{
             col_breed.setCellValueFactory(new PropertyValueFactory<>("breed"));
             col_fee.setCellValueFactory(new PropertyValueFactory<>("fee"));
 
-            while (rs.next()) {
+            FilteredList<Dog> filterDog = new FilteredList<>(dogList, b -> true);
+            tf_search_bar.textProperty().addListener((observable, oldValue, newValue) -> {
+                filterDog.setPredicate(dog -> {
+                    // if filter text is empty, display all dogs.
+                    if (newValue == null || newValue.isEmpty()) {
+                        return true;
+                    }
+                    
+                    // compare text
+                    String lowerCaseFilter = newValue.toLowerCase();
+                    
+                    if (String.valueOf(dog.getDogID()).toLowerCase().contains(lowerCaseFilter)) {
+                        return true; // filter matches dog ID
+                    } else if (dog.getName().toLowerCase().contains(lowerCaseFilter)) {
+                        return true; // filter matches name
+                    }
+                    else if (dog.getAge().toLowerCase().contains(lowerCaseFilter)) {
+                        return true; // filter matches age
+                    }
+                    else if (dog.getGender().toLowerCase().contains(lowerCaseFilter)) {
+                        return true; // filter matches gender
+                    }
+                    else if (dog.getStatus().toLowerCase().contains(lowerCaseFilter)) {
+                        return true; // filter matches status
+                    }
+                    else if (dog.getFee().toLowerCase().contains(lowerCaseFilter)) {
+                        return true; // filter matches fee
+                    }
+                    else if (dog.getBreed().toLowerCase().contains(lowerCaseFilter)) {
+                        return true; // filter matches breed
+                    }
+                    return false; // does not match.
+                });
+            });
 
-                dogList.add(new Dog(rs.getString("dogID"), rs.getString("name"), rs.getString("age"), rs.getString("gender"), rs.getString("weight"), rs.getString("status"), rs.getString("breed"), rs.getString("fee")));
-                
-            }
-
-    
-
-            table_dogs.setItems(dogList);
+            SortedList<Dog> sortDog = new SortedList<>(filterDog);
+            sortDog.comparatorProperty().bind(table_dogs.comparatorProperty());
+            table_dogs.setItems(sortDog);
 
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resource) {
+        searchDog();
 
     }
 
-
-        FilteredList<Dog> filteredAppointments = new FilteredList<>(dogList, b -> true);
-
-
-    
     }
 
 
