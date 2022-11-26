@@ -36,9 +36,9 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="animalshelter.Controllers.dogController">
@@ -59,9 +59,10 @@
             </TableView>
             <AnchorPane layoutY="-1.0" prefHeight="478.0" prefWidth="164.0" style="-fx-background-color: #FFFFFF;">
                <children>
-                  <Button fx:id="button_go_appointments" layoutX="29.0" layoutY="358.0" mnemonicParsing="false" onAction="#goToAppointmentsClicked" text="Appointment Page" />
-                  <Button fx:id="button_logout" layoutX="55.0" layoutY="425.0" mnemonicParsing="false" onAction="#logoutClicked" text="Logout" />
-                  <Button fx:id="button_health" layoutX="44.0" layoutY="392.0" mnemonicParsing="false" onAction="#healthClicked" text="Health Page" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9aceff" height="478.0" layoutX="-26.0" stroke="TRANSPARENT" strokeType="INSIDE" width="193.0" />
+                  <Button fx:id="button_go_appointments" layoutX="24.0" layoutY="358.0" mnemonicParsing="false" onAction="#goToAppointmentsClicked" prefHeight="26.0" prefWidth="122.0" text="Appointment Page" />
+                  <Button fx:id="button_logout" layoutX="23.0" layoutY="424.0" mnemonicParsing="false" onAction="#logoutClicked" prefHeight="26.0" prefWidth="122.0" text="Logout" />
+                  <Button fx:id="button_health" layoutX="23.0" layoutY="392.0" mnemonicParsing="false" onAction="#healthClicked" prefHeight="18.0" prefWidth="122.0" text="Health Page" />
                   <Label fx:id="label_for" layoutX="55.0" layoutY="56.0" text="For">
                      <font>
                         <Font name="Franklin Gothic Heavy" size="36.0" />
@@ -77,14 +78,9 @@
                         <Font name="Franklin Gothic Heavy" size="36.0" />
                      </font>
                   </Label>
-                  <Button fx:id="button_health1" layoutX="23.0" layoutY="324.0" mnemonicParsing="false" onAction="#medicalHistoryClicked" text="Medical History Page" />
+                  <Button fx:id="button_health1" layoutX="23.0" layoutY="324.0" mnemonicParsing="false" onAction="#medicalHistoryClicked" prefHeight="26.0" prefWidth="122.0" text="Medical History Page" />
                </children></AnchorPane>
-            <Label fx:id="label_search" layoutX="174.0" layoutY="29.0" text="Search" />
-            <TextField fx:id="tf_search_bar" layoutX="217.0" layoutY="25.0" prefHeight="7.0" prefWidth="418.0" promptText="keywords">
-               <font>
-                  <Font name="System Italic" size="12.0" />
-               </font>
-            </TextField>
+            <Button fx:id="button_search" layoutX="520.0" layoutY="25.0" mnemonicParsing="false" onAction="#searchForDogClicked" prefHeight="26.0" prefWidth="105.0" text="Find a Dog" />
       </children>
     </AnchorPane>
   </children>
