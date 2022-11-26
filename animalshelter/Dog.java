@@ -1,7 +1,7 @@
 package animalshelter;
 
 public class Dog {
-    private String dogID;
+    private Integer dogID;
     private String name;
     private String age;
     private String gender;
@@ -10,81 +10,82 @@ public class Dog {
     private String breed;
     private String fee;
 
-
-//Constructor for Dogs
-public Dog(String dogID, String name, String age,String gender, String weight, String status, String breed, String fee){
-    this.dogID = dogID;
-    this.name = name;
-    this.age = age;
-    this.gender = gender;
-    this.weight = weight;
-    this.status = status;
-    this.breed = breed;
-    this.fee = fee;
-    }
-//getters
-public String getDogID() {
-    return dogID;
+    // Constructor for Dogs
+    public Dog(Integer dogID, String name, String age, String gender, String weight, String status, String breed,
+            String fee) {
+        this.dogID = dogID;
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
+        this.weight = weight;
+        this.status = status;
+        this.breed = breed;
+        this.fee = fee;
     }
 
-public String getName() {
-    return name;
+    // getters
+    public Integer getDogID() {
+        return dogID;
     }
 
-public String getAge() {
-    return age;
+    public String getName() {
+        return name;
     }
 
-public String getGender() {
-    return gender;
+    public String getAge() {
+        return age;
     }
 
-public String getWeight() {
-    return weight;
+    public String getGender() {
+        return gender;
     }
 
-public String getStatus() {
-    return status;
+    public String getWeight() {
+        return weight;
     }
 
-public String getBreed() {
-    return breed;
+    public String getStatus() {
+        return status;
     }
 
-public String getFee() {
-    return fee;
+    public String getBreed() {
+        return breed;
     }
 
-//setters
-public void setDogID(String dogID) {
-    this.dogID = dogID;
+    public String getFee() {
+        return fee;
     }
 
-public void setName(String name) {
-    this.name = name;
+    // setters
+    public void setDogID(Integer dogID) {
+        this.dogID = dogID;
     }
 
-public void setAge(String age) {
-    this.age = age;
+    public void setName(String name) {
+        this.name = name;
     }
 
-public void setGender(String gender) {
-    this.gender = gender;
-    }    
-
-public void setWeight(String weight) {
-    this.weight = weight;
-    } 
-
-public void setStatus(String status) {
-    this.status = status;
+    public void setAge(String age) {
+        this.age = age;
     }
 
-public void setBreed(String breed) {
-    this.breed = breed;
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
-public void setFee(String fee) {
-    this.fee = fee;
-    }  
+    public void setWeight(String weight) {
+        this.weight = weight;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public void setBreed(String breed) {
+        this.breed = breed;
+    }
+
+    public void setFee(String fee) {
+        this.fee = fee;
+    }
 }

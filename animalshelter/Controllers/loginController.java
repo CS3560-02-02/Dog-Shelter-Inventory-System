@@ -50,7 +50,7 @@ public class loginController{
     PreparedStatement pst = null;
     ResultSet rs = null;
 
-    //connects to mysql database and login if user exists (Done)
+    //connects to mysql database and login if user exists (DONE)
     @FXML
     public void loginClicked(ActionEvent event) throws IOException {
 

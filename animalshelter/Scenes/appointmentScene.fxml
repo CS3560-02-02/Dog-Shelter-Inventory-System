@@ -47,36 +47,37 @@
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
-            <Button fx:id="button_create" layoutX="14.0" layoutY="355.0" mnemonicParsing="false" onAction="#createAppointmentClicked" text="Create Appointment" />
-            <Button fx:id="button_update" layoutX="176.0" layoutY="355.0" mnemonicParsing="false" onAction="#updateAppointmentClicked" text="Update Appointment" />
-            <Button fx:id="button_adoptionPage" layoutX="505.0" layoutY="355.0" mnemonicParsing="false" onAction="#adoptionPageClicked" prefHeight="25.0" prefWidth="99.0" text="Adoption Page" />
-            <TableView fx:id="table_appointments" layoutX="207.0" layoutY="31.0" prefHeight="312.0" prefWidth="419.0">
+            <Button fx:id="button_create" layoutX="55.0" layoutY="355.0" mnemonicParsing="false" onAction="#createAppointmentClicked" text="Create Appointment" />
+            <Button fx:id="button_update" layoutX="225.0" layoutY="355.0" mnemonicParsing="false" onAction="#updateAppointmentClicked" text="Update Appointment" />
+            <Button fx:id="button_adoptionPage" layoutX="577.0" layoutY="355.0" mnemonicParsing="false" onAction="#adoptionPageClicked" prefHeight="25.0" prefWidth="99.0" text="Adoption Page" />
+            <TableView fx:id="table_appointments" layoutX="230.0" layoutY="34.0" prefHeight="311.0" prefWidth="525.0">
               <columns>
-                <TableColumn fx:id="col_appointmentID" prefWidth="102.0" text="Appointment ID" />
-                <TableColumn fx:id="col_dog_name" prefWidth="78.0" text="Dog ID" />
-                  <TableColumn fx:id="col_date" minWidth="0.0" prefWidth="72.0" text="Date" />
-                  <TableColumn fx:id="col_reason" prefWidth="87.0" text="Reason" />
-                  <TableColumn fx:id="col_time" prefWidth="82.0" text="Time" />
+                  <TableColumn fx:id="col_email" minWidth="0.0" prefWidth="115.0" text="Email" />
+                <TableColumn fx:id="col_appointmentID" prefWidth="103.0" text="Appointment ID" />
+                <TableColumn fx:id="col_dog_name" prefWidth="52.0" text="Dog ID" />
+                  <TableColumn fx:id="col_date" minWidth="0.0" prefWidth="81.0" text="Date" />
+                  <TableColumn fx:id="col_reason" prefWidth="83.0" text="Reason" />
+                  <TableColumn fx:id="col_time" prefWidth="90.0" text="Time" />
               </columns>
             </TableView>
-            <Label fx:id="label_create_text" layoutX="32.0" layoutY="15.0" text="Create New Appointment">
+            <Label fx:id="label_create_text" layoutX="55.0" layoutY="17.0" text="Create New Appointment">
                <font>
                   <Font name="Franklin Gothic Heavy Italic" size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="tf_appointmentID" layoutX="84.0" layoutY="56.0" prefHeight="25.0" prefWidth="108.0" />
-            <TextField fx:id="tf_dog_name" layoutX="84.0" layoutY="104.0" prefHeight="25.0" prefWidth="108.0" />
-            <TextField fx:id="tf_time" layoutX="84.0" layoutY="209.0" prefHeight="25.0" prefWidth="108.0" />
-            <RadioButton fx:id="rb_adopt" layoutX="79.0" layoutY="272.0" mnemonicParsing="false" text="Adopt Dog" />
-            <RadioButton fx:id="rb_visit" layoutX="79.0" layoutY="296.0" mnemonicParsing="false" text="Visit Dog" />
-            <DatePicker fx:id="datepicker_date" layoutX="84.0" layoutY="154.0" prefHeight="25.0" prefWidth="108.0" />
-            <Label fx:id="label_id" layoutX="48.0" layoutY="60.0" text="ID" />
-            <Label fx:id="label_dog_name" layoutX="35.0" layoutY="108.0" text="Dog ID" />
-            <Label fx:id="label_date" layoutX="36.0" layoutY="158.0" text="Date" />
-            <Label fx:id="label_time" layoutX="41.0" layoutY="213.0" text="Time" />
-            <Label fx:id="label_reason_for_visit" layoutX="17.0" layoutY="244.0" text="Reason for Visit:" />
-            <Button fx:id="button_delete_appointment" layoutX="342.0" layoutY="355.0" mnemonicParsing="false" onAction="#deleteAppointmentClicked" prefHeight="25.0" prefWidth="124.0" text="Delete Appointment" />
-            <Label fx:id="label_note" layoutX="273.0" layoutY="7.0" text="NOTE: All appointments are 1 hour max from selected time!" />
+            <TextField fx:id="tf_dog_name" layoutX="117.0" layoutY="95.0" prefHeight="25.0" prefWidth="108.0" />
+            <TextField fx:id="tf_time" layoutX="117.0" layoutY="177.0" prefHeight="25.0" prefWidth="108.0" />
+            <TextField fx:id="tf_email" layoutX="117.0" layoutY="58.0" prefHeight="25.0" prefWidth="108.0" />
+            <RadioButton fx:id="rb_adopt" layoutX="77.0" layoutY="265.0" mnemonicParsing="false" text="Adopt Dog" />
+            <RadioButton fx:id="rb_visit" layoutX="77.0" layoutY="299.0" mnemonicParsing="false" text="Visit Dog" />
+            <DatePicker fx:id="datepicker_date" layoutX="117.0" layoutY="134.0" prefHeight="25.0" prefWidth="108.0" />
+            <Label fx:id="label_dog_name" layoutX="38.0" layoutY="99.0" text="Dog ID" />
+            <Label fx:id="label_date" layoutX="45.0" layoutY="138.0" text="Date" />
+            <Label fx:id="label_time" layoutX="45.0" layoutY="181.0" text="Time" />
+            <Label fx:id="label_reason_for_visit" layoutX="12.0" layoutY="223.0" text="Reason for Visit:" />
+            <Button fx:id="button_delete_appointment" layoutX="404.0" layoutY="355.0" mnemonicParsing="false" onAction="#deleteAppointmentClicked" prefHeight="25.0" prefWidth="124.0" text="Delete Appointment" />
+            <Label fx:id="label_note" layoutX="343.0" layoutY="9.0" text="NOTE: All appointments are 1 hour max from selected time!" />
+            <Label fx:id="label_customerEmail" layoutX="15.0" layoutY="62.0" text="Customer Email" />
       </children>
     </AnchorPane>
   </children>
