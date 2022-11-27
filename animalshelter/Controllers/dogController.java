@@ -35,6 +35,12 @@ public class dogController implements Initializable{
     private Label label_adoption;
 
     @FXML
+    private Label label_search;
+
+    @FXML
+    private TextField tf_search_bar;
+
+    @FXML
     private Label label_title;
 
     @FXML
@@ -45,9 +51,6 @@ public class dogController implements Initializable{
 
     @FXML
     private Button button_health;
-
-    @FXML
-    private Button button_search;
     
     @FXML
     private TableView<Dog> table_dogs;

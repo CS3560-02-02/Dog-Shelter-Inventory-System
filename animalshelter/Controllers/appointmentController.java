@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
@@ -39,6 +40,9 @@ public class appointmentController implements Initializable {
     int myIndex;
     int id;
 
+    ObservableList<String> times = FXCollections.observableArrayList("8:00 am", "9:00 am", "10:00 am", "11:00 am", 
+    "12:00 pm", "1:00 pm", "2:00 pm", "3:00 pm", "4:00 pm", "5:00 pm");
+
     @FXML
     private DatePicker datepicker_date;
 
@@ -71,9 +75,6 @@ public class appointmentController implements Initializable {
 
     @FXML
     private TextField tf_dog_name;
-
-    @FXML
-    private TextField tf_time;
 
     @FXML
     private TextField tf_email;
@@ -112,6 +113,9 @@ public class appointmentController implements Initializable {
     private TableColumn<Appointment, String> col_time;
 
     @FXML
+    private ChoiceBox<String> tf_time;
+
+    @FXML
     void adoptionPageClicked(ActionEvent event) throws IOException {
         changeScene.switchScene(event, "Scenes/dogScene.fxml");
     }
@@ -128,7 +132,7 @@ public class appointmentController implements Initializable {
         String dogID = tf_dog_name.getText();
         LocalDate date = datepicker_date.getValue();
         String formattedDate = date.format(DateTimeFormatter.ofPattern("MM-dd-yyyy"));
-        String Time = tf_time.getText();
+        String Time = (String) tf_time.getSelectionModel().getSelectedItem();
         String reason = ((RadioButton) toggleGroup.getSelectedToggle()).getText();
 
         // won't create appointment if user doesn't pick a date
@@ -196,7 +200,7 @@ public class appointmentController implements Initializable {
         String dogID = tf_dog_name.getText();
         LocalDate date = datepicker_date.getValue();
         String formattedDate = date.format(DateTimeFormatter.ofPattern("MM-dd-yyyy"));
-        String Time = tf_time.getText();
+        String Time = (String) tf_time.getSelectionModel().getSelectedItem();
         String toggleName = ((RadioButton) toggleGroup.getSelectedToggle()).getText();
         try {
             Connection conn = animalShelterSQL.DbConnector();
@@ -236,7 +240,8 @@ public class appointmentController implements Initializable {
         Connection conn = animalShelterSQL.DbConnector();
 
         String appointmentListQuery = "SELECT email, appointmentID, dogID, date, time, reason FROM appointment";
-
+        //initializes the time drop down menu
+        tf_time.setItems(times);
         try {
             PreparedStatement pst = conn.prepareStatement(appointmentListQuery);
             ResultSet rs = pst.executeQuery();
