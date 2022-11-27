@@ -101,6 +101,9 @@ public class appointmentController implements Initializable {
     private TableColumn<Appointment, Integer> col_appointmentID;
 
     @FXML
+    private TableColumn<Appointment, String> col_dog_id;
+
+    @FXML
     private TableColumn<Appointment, String> col_dog_name;
 
     @FXML
@@ -134,6 +137,7 @@ public class appointmentController implements Initializable {
         String formattedDate = date.format(DateTimeFormatter.ofPattern("MM-dd-yyyy"));
         String Time = (String) tf_time.getSelectionModel().getSelectedItem();
         String reason = ((RadioButton) toggleGroup.getSelectedToggle()).getText();
+        
 
         // won't create appointment if user doesn't pick a date
         try {
@@ -217,7 +221,6 @@ public class appointmentController implements Initializable {
                 pst.setString(3, formattedDate);
                 pst.setString(4, Time);
                 pst.setString(5, toggleName);
-                pst.setInt(6, id);
                 pst.executeUpdate();
 
                 JOptionPane.showMessageDialog(null, "Appointment Updated!");
@@ -239,7 +242,8 @@ public class appointmentController implements Initializable {
     public void initialize(URL location, ResourceBundle resource) {
         Connection conn = animalShelterSQL.DbConnector();
 
-        String appointmentListQuery = "SELECT email, appointmentID, dogID, date, time, reason FROM appointment";
+        String appointmentListQuery = "SELECT appointment.email, appointment.appointmentID, appointment.dogID, dog.name, appointment.date, appointment.time, appointment.reason FROM animalshelter.appointment INNER JOIN animalshelter.dog ON appointment.dogID=dog.dogID;";
+
         //initializes the time drop down menu
         tf_time.setItems(times);
         try {
@@ -249,13 +253,15 @@ public class appointmentController implements Initializable {
             while (rs.next()) {
 
                 appointmentList
-                        .add(new Appointment(rs.getString("email"), rs.getInt("appointmentID"), rs.getString("dogID"),
+                        .add(new Appointment(rs.getString("email"), rs.getInt("appointmentID"), rs.getString("dogID"), rs.getString("name"),
                                 rs.getString("date"), rs.getString("time"), rs.getString("reason")));
+            System.out.println("ISABELLA"+rs.getString("name"));
             }
 
             col_email.setCellValueFactory(new PropertyValueFactory<>("email"));
             col_appointmentID.setCellValueFactory(new PropertyValueFactory<>("appointmentID"));
-            col_dog_name.setCellValueFactory(new PropertyValueFactory<>("dogID"));
+            col_dog_id.setCellValueFactory(new PropertyValueFactory<>("dogID"));
+            col_dog_name.setCellValueFactory(new PropertyValueFactory<>("name"));
             col_date.setCellValueFactory(new PropertyValueFactory<>("date"));
             col_time.setCellValueFactory(new PropertyValueFactory<>("time"));
             col_reason.setCellValueFactory(new PropertyValueFactory<>("reason"));

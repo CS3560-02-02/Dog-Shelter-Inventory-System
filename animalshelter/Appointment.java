@@ -8,15 +8,17 @@ public class Appointment {
   private String date;
   private String reason;
   private String time;
+  private String name;
 
   // Constructor for Appointments
-  public Appointment(String email, Integer appointmentID, String dogID, String date, String time, String reason) {
+  public Appointment(String email, Integer appointmentID, String dogID, String name, String date, String time, String reason) {
     this.email = email;
     this.appointmentID = appointmentID;
     this.dogID = dogID;
     this.date = date;
     this.time = time;
     this.reason = reason;
+    this.name = name;
   }
 
   // getters
@@ -45,8 +47,14 @@ public class Appointment {
     return reason;
   }
 
+  public String getName(){
+    return name;
+  }
   // setters
 
+  public void setName(String name){
+    this.name = name;
+  }
   public void setEmail(String email) {
     this.email = email;
   }

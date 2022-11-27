@@ -51,7 +51,8 @@
               <columns>
                   <TableColumn fx:id="col_email" minWidth="0.0" prefWidth="115.0" text="Email" />
                 <TableColumn fx:id="col_appointmentID" prefWidth="80.00006103515625" text="Appt ID" />
-                <TableColumn fx:id="col_dog_name" prefWidth="75.199951171875" text="Dog ID" />
+                <TableColumn fx:id="col_dog_id" prefWidth="75.199951171875" text="Dog ID" />
+                  <TableColumn fx:id="col_dog_name" prefWidth="75.0" text="Dog Name" />
                   <TableColumn fx:id="col_date" minWidth="0.0" prefWidth="81.0" text="Date" />
                   <TableColumn fx:id="col_reason" prefWidth="83.0" text="Reason" />
                   <TableColumn fx:id="col_time" prefWidth="78.4000244140625" text="Time" />
