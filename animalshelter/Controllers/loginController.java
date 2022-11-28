@@ -63,7 +63,7 @@ public class loginController{
 
             try{
                 Class.forName("com.mysql.jdbc.Driver");
-                conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/animalshelter", "root", "1234");
+                conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/animalshelter", "root", "testpass11!Aa");
                 pst = conn.prepareStatement("select * from customer where username =? and password=?");
 
                 pst.setString(1, username);
