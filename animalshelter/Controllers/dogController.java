@@ -51,7 +51,10 @@ public class dogController implements Initializable{
 
     @FXML
     private Button button_health;
-    
+
+    @FXML
+    private Button button_biography;
+
     @FXML
     private TableView<Dog> table_dogs;
 
@@ -99,6 +102,10 @@ public class dogController implements Initializable{
         changeScene.switchScene(event, "Scenes/medicalHistoryScene.fxml");
     }
 
+    @FXML
+    void biographyPressed(ActionEvent event){
+        changeScene.switchScene(event, "Scenes/bioScene.fxml");
+    }
 
     //displays tableview of dogs for adoption with search function(DONE)
 
