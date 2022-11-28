@@ -32,7 +32,7 @@ public class medicalHistoryController implements Initializable{
     private Button button_adoption;
 
     @FXML
-    private Button button_appointment;
+    private Button button_go_appointment;
 
     @FXML
     private Button button_health;
@@ -40,6 +40,8 @@ public class medicalHistoryController implements Initializable{
     @FXML
     private Button button_logout;
 
+    @FXML
+    private Button button_biography;
     
     @FXML
     private TableView<medicalHistory> table_medical_history;
@@ -71,7 +73,6 @@ public class medicalHistoryController implements Initializable{
     @FXML
     void adoptionClicked(ActionEvent event) {
         changeScene.switchScene(event, "Scenes/dogScene.fxml");
-
     }
 
     @FXML
@@ -80,11 +81,14 @@ public class medicalHistoryController implements Initializable{
     }
 
     @FXML
-    void logoutClicked(ActionEvent event) {
-        changeScene.switchScene(event, "Scenes/loginScene.fxml");
-
+    void biographyPressed(ActionEvent event){
+        changeScene.switchScene(event, "Scenes/bioScene.fxml");
     }
 
+    @FXML
+    void goToAppointmentsClicked(ActionEvent event) {
+        changeScene.switchScene(event, "Scenes/appointmentScene.fxml");
+    }
 
     ObservableList<medicalHistory> medicalHistoryList = FXCollections.observableArrayList();
     //Shows list of all dog's medical history (DONE)

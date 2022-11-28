@@ -52,9 +52,10 @@
                         <Font name="Franklin Gothic Heavy" size="24.0" />
                      </font>
                   </Label>
-                  <Button fx:id="button_adoption" layoutX="48.0" layoutY="295.0" mnemonicParsing="false" onAction="#adoptionClicked" text="Adoption Page" />
-                  <Button fx:id="button_health" layoutX="57.0" layoutY="328.0" mnemonicParsing="false" onAction="#healthClicked" text="Health Page" />
-                  <Button fx:id="button_logout" layoutX="69.0" layoutY="361.0" mnemonicParsing="false" onAction="#logoutClicked" text="Logout" />
+                  <Button fx:id="button_adoption" layoutX="28.0" layoutY="359.0" mnemonicParsing="false" onAction="#adoptionClicked" prefHeight="26.0" prefWidth="136.0" text="Adoption Page" />
+                  <Button fx:id="button_health" layoutX="28.0" layoutY="322.0" mnemonicParsing="false" onAction="#healthClicked" prefHeight="26.0" prefWidth="136.0" text="Health Page" />
+                  <Button fx:id="button_go_appointments" layoutX="28.0" layoutY="288.0" mnemonicParsing="false" onAction="#goToAppointmentsClicked" prefHeight="26.0" prefWidth="136.0" text="Appointments" />
+                  <Button fx:id="button_biography" layoutX="28.0" layoutY="253.0" mnemonicParsing="false" onAction="#biographyPressed" prefHeight="26.0" prefWidth="136.0" text="Biographies" />
                </children>
             </AnchorPane>
             <TableView fx:id="table_medical_history" layoutX="193.0" layoutY="55.0" prefHeight="347.0" prefWidth="446.0">

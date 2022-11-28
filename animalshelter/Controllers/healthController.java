@@ -35,6 +35,12 @@ public class healthController implements Initializable {
     private Button button_medical_history;
 
     @FXML
+    private Button button_biography;
+
+    @FXML
+    private Button button_go_appointment;
+
+    @FXML
     private TableView<Health> table_health;
 
     @FXML
@@ -68,6 +74,15 @@ public class healthController implements Initializable {
         changeScene.switchScene(event, "Scenes/medicalHistoryScene.fxml");
     }
 
+    @FXML
+    void biographyPressed(ActionEvent event){
+        changeScene.switchScene(event, "Scenes/bioScene.fxml");
+    }
+
+    @FXML
+    void goToAppointmentsClicked(ActionEvent event) {
+        changeScene.switchScene(event, "Scenes/appointmentScene.fxml");
+    }
     Connection conn = null;
     ResultSet rs = null;
     PreparedStatement pst = null;

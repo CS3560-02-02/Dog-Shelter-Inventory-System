@@ -77,7 +77,7 @@
                         <Font name="Franklin Gothic Heavy" size="36.0" />
                      </font>
                   </Label>
-                  <Button fx:id="button_health" layoutX="23.0" layoutY="324.0" mnemonicParsing="false" onAction="#medicalHistoryClicked" text="Medical History Page" />
+                  <Button fx:id="button_medicalHis" layoutX="23.0" layoutY="324.0" mnemonicParsing="false" onAction="#medicalHistoryClicked" text="Medical History Page" />
                   <Button fx:id="button_biography" layoutX="23.0" layoutY="286.0" mnemonicParsing="false" onAction="#biographyPressed" prefHeight="26.0" prefWidth="128.0" text="Biography" />
                </children></AnchorPane>
             <Label fx:id="label_search" layoutX="174.0" layoutY="29.0" text="Search" />

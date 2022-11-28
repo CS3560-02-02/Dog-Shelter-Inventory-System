@@ -46,7 +46,7 @@
       <children>
             <Button fx:id="button_create" layoutX="20.0" layoutY="354.0" mnemonicParsing="false" onAction="#createAppointmentClicked" prefHeight="31.0" prefWidth="142.0" text="Create Appointment" />
             <Button fx:id="button_update" layoutX="20.0" layoutY="444.0" mnemonicParsing="false" onAction="#updateAppointmentClicked" prefHeight="31.0" prefWidth="142.0" text="Update Appointment" />
-            <Button fx:id="button_adoptionPage" layoutX="698.0" layoutY="444.0" mnemonicParsing="false" onAction="#adoptionPageClicked" prefHeight="31.0" prefWidth="124.0" text="Adoption Page" />
+            <Button fx:id="button_adoptionPage" layoutX="698.0" layoutY="444.0" mnemonicParsing="false" onAction="#adoptionPageClicked" prefHeight="31.0" prefWidth="124.0" text="Back" />
             <TableView fx:id="table_appointments" layoutX="262.0" layoutY="34.0" prefHeight="379.0" prefWidth="570.0">
               <columns>
                   <TableColumn fx:id="col_email" minWidth="0.0" prefWidth="115.0" text="Email" />

@@ -53,6 +53,9 @@ public class dogController implements Initializable{
     private Button button_health;
 
     @FXML
+    private Button button_medicalHis;
+
+    @FXML
     private Button button_biography;
 
     @FXML

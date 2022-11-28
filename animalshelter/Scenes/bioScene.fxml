@@ -32,14 +32,15 @@
                   </TextField>
                </children>
             </AnchorPane>
-            <Button fx:id="button_adoption" layoutX="25.0" layoutY="269.0" mnemonicParsing="false" onAction="#adoptionClicked" prefHeight="25.0" prefWidth="128.0" text="Adoption Page" />
+            <Button fx:id="button_adoption" layoutX="25.0" layoutY="347.0" mnemonicParsing="false" onAction="#adoptionClicked" prefHeight="25.0" prefWidth="128.0" text="Adoption Page" />
             <Button fx:id="button_health" layoutX="25.0" layoutY="312.0" mnemonicParsing="false" onAction="#healthClicked" prefHeight="25.0" prefWidth="128.0" text="Health Page" />
-            <Button fx:id="button_medical_history" layoutX="25.0" layoutY="229.0" mnemonicParsing="false" onAction="#medicalHistoryClicked" text="Medical History Page" />
+            <Button fx:id="button_medical_history" layoutX="25.0" layoutY="276.0" mnemonicParsing="false" onAction="#medicalHistoryClicked" text="Medical History Page" />
             <Label fx:id="label_dog_biography" layoutX="13.0" layoutY="33.0" text="Dog Biography">
                <font>
                   <Font name="Franklin Gothic Heavy" size="22.0" />
                </font>
             </Label>
+            <Button fx:id="button_adoption1" layoutX="25.0" layoutY="243.0" mnemonicParsing="false" onAction="#adoptionClicked" prefHeight="25.0" prefWidth="128.0" text="Appointments" />
          </children>
       </AnchorPane>
    </children>
