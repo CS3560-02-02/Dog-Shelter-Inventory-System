@@ -1,10 +1,31 @@
 package animalshelter;
 
 public class Bio{
+    private Integer bioID;
+    private Integer dogID;
     private String activityLevel;
-    private String temperament;
-    private String dogsLikes;
-    private String dogsDislikes;
+    private String temp;
+    private String likes;
+    private String dislikes;
+
+    public Bio(Integer dogID, String temperament, String activitylevel, String likes, String dislikes) {
+        this.dogID = dogID;
+        this.temp = temperament;
+        this.activityLevel = activitylevel;
+        this.likes = likes;
+        this.dislikes = dislikes;
+
+    }
+
+
+    public Integer getDogID() {
+        return dogID;
+    }
+    
+    public Integer getBioID() {
+        return bioID;
+    }
+
 
     public String getActivityLevel() {
         return activityLevel;
@@ -15,27 +36,27 @@ public class Bio{
     }
 
     public String getTemperament(){
-        return temperament;
+        return temp;
     }
 
     public void setTemperament(String temperament){
-        this.temperament = temperament;
+        this.temp = temperament;
     }
 
-    public String getDogsLikes(){
-        return dogsLikes;
+    public String getlikes(){
+        return likes;
     }
 
-    public void setDogsLikes(String dogsLikes){
-        this.dogsLikes = dogsLikes;
+    public void setlikes(String likes){
+        this.likes = likes;
     }
 
-    public String getDogsDislikes(){
-        return dogsDislikes;
+    public String getdislikes(){
+        return dislikes;
     }
 
-    public void setDogsDislikes(String dogsDislikes){
-        this.dogsDislikes = dogsDislikes;
+    public void setdislikes(String dislikes){
+        this.dislikes = dislikes;
     }
 
 

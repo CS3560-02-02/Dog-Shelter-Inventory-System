@@ -78,6 +78,7 @@
                      </font>
                   </Label>
                   <Button fx:id="button_health1" layoutX="23.0" layoutY="324.0" mnemonicParsing="false" onAction="#medicalHistoryClicked" text="Medical History Page" />
+                  <Button fx:id="button_biography" layoutX="18.0" layoutY="290.0" mnemonicParsing="false" onAction="#biographyPressed" prefHeight="25.0" prefWidth="137.0" text="Biography Page" />
                </children></AnchorPane>
             <Label fx:id="label_search" layoutX="174.0" layoutY="29.0" text="Search" />
             <TextField fx:id="tf_search_bar" layoutX="217.0" layoutY="25.0" prefHeight="7.0" prefWidth="418.0" promptText="keywords">

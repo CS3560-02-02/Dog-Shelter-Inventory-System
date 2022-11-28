@@ -52,7 +52,7 @@ public class loginController{
     //connects to mysql database and login if user exists (DONE)
     @FXML
     public void loginClicked(ActionEvent event) throws IOException {
-
+        changeScene.switchScene(event, "Scenes/dogScene.fxml");
         String username = tf_username.getText();
         String password = pf_password.getText();
 

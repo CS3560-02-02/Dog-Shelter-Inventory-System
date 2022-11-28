@@ -51,6 +51,9 @@ public class dogController implements Initializable{
 
     @FXML
     private Button button_health;
+
+    @FXML
+    private Button button_biography;
     
     @FXML
     private TableView<Dog> table_dogs;
@@ -84,9 +87,15 @@ public class dogController implements Initializable{
         changeScene.switchScene(event, "Scenes/appointmentScene.fxml");
     }
 
+
     @FXML
     void logoutClicked(ActionEvent event) {
         changeScene.switchScene(event, "Scenes/loginScene.fxml");
+    }
+
+    @FXML
+    void biographyPressed(ActionEvent event) {
+        changeScene.switchScene(event, "Scenes/bioScene.fxml");
     }
 
     @FXML

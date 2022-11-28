@@ -1,4 +1,5 @@
 CREATE DATABASE `animalshelter` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+CREATE DATABASE `animalshelter` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 CREATE TABLE `appointment` (
   `appointmentID` int NOT NULL AUTO_INCREMENT,
   `email` varchar(45) NOT NULL,
@@ -57,3 +58,14 @@ CREATE TABLE `medicalhistory` (
   KEY `medicalhistory_dogID_idx` (`dogID`),
   CONSTRAINT `medicalhistory_dogID` FOREIGN KEY (`dogID`) REFERENCES `dog` (`dogID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `biography` (
+  `BioID` int NOT NULL AUTO_INCREMENT,
+  `likes` varchar(45) NOT NULL,
+  `dislikes` varchar(45) NOT NULL,
+  `temperament` varchar(45) NOT NULL,
+  `activitylevel` varchar(45) NOT NULL,
+  `dogID` int NOT NULL,
+  PRIMARY KEY (`BioID`),
+  KEY `dogID_idx` (`dogID`),
+  CONSTRAINT `dogID` FOREIGN KEY (`dogID`) REFERENCES `dog` (`dogID`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
