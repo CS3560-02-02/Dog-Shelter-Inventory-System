@@ -39,6 +39,9 @@ public class biographyController implements Initializable {
     private Button button_health;
 
     @FXML
+    private Button button_go_appointments;
+
+    @FXML
     private Button button_medical_history;
     
     @FXML
@@ -79,6 +82,11 @@ public class biographyController implements Initializable {
     @FXML
     void medicalHistoryClicked(ActionEvent event) {
         changeScene.switchScene(event, "Scenes/medicalHistoryScene.fxml");
+    }
+
+    @FXML
+    void goToAppointmentsClicked(ActionEvent event) {
+        changeScene.switchScene(event, "Scenes/appointmentScene.fxml");
     }
 
     ObservableList<Bio> biographyList = FXCollections.observableArrayList();

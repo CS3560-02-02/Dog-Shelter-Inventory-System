@@ -40,7 +40,7 @@
                   <Font name="Franklin Gothic Heavy" size="22.0" />
                </font>
             </Label>
-            <Button fx:id="button_adoption1" layoutX="25.0" layoutY="243.0" mnemonicParsing="false" onAction="#adoptionClicked" prefHeight="25.0" prefWidth="128.0" text="Appointments" />
+            <Button fx:id="button_go_appointments" layoutX="25.0" layoutY="243.0" mnemonicParsing="false" onAction="#goToAppointmentsClicked" prefHeight="25.0" prefWidth="128.0" text="Appointments" />
          </children>
       </AnchorPane>
    </children>
