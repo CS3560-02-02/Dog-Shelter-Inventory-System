@@ -49,6 +49,9 @@ public class healthController implements Initializable {
     @FXML
     private TableColumn<Health, String> col_needMedication;
 
+    @FXML 
+    private TableColumn<Health, String> col_dog_name;
+
     @FXML
     private Label label_dog_health;
 
@@ -75,7 +78,7 @@ public class healthController implements Initializable {
     public void searchHealth(){
         Connection conn = animalShelterSQL.DbConnector();
 
-        String healthListQuery = "SELECT * FROM health";
+        String healthListQuery = "SELECT health.dogID, dog.name, health.diseaseType, health.dateContracted, health.needMedication FROM animalshelter.health INNER JOIN animalshelter.dog ON health.dogID=dog.dogID";
 
         try {
 
@@ -83,10 +86,11 @@ public class healthController implements Initializable {
             ResultSet rs = pst.executeQuery();
 
             while (rs.next()) {
-                healthList.add(new Health(rs.getInt("dogID"), rs.getString("diseaseType"), rs.getString("dateContracted"), rs.getString("needMedication")));
+                healthList.add(new Health(rs.getInt("dogID"), rs.getString("name"), rs.getString("diseaseType"), rs.getString("dateContracted"), rs.getString("needMedication")));
             }
 
             col_dogID.setCellValueFactory(new PropertyValueFactory<>("dogID"));
+            col_dog_name.setCellValueFactory(new PropertyValueFactory<>("name"));
             col_diseaseType.setCellValueFactory(new PropertyValueFactory<>("diseaseType"));
             col_dateContracted.setCellValueFactory(new PropertyValueFactory<>("dateContracted"));
             col_needMedication.setCellValueFactory(new PropertyValueFactory<>("needMedication"));

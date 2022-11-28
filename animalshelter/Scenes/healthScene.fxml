@@ -53,10 +53,11 @@
             </AnchorPane>
             <TableView fx:id="table_health" layoutX="158.0" layoutY="49.0" prefHeight="352.0" prefWidth="481.0">
               <columns>
-                <TableColumn fx:id="col_dogID" prefWidth="46.0" text="Dog ID" />
-                <TableColumn fx:id="col_diseaseType" prefWidth="204.0" text="Disease Type" />
-                  <TableColumn fx:id="col_dateContracted" prefWidth="110.0" text="Date Contracted" />
-                  <TableColumn fx:id="col_needMedication" prefWidth="122.0" text="Need Medication" />
+                <TableColumn fx:id="col_dogID" prefWidth="61.60003662109375" text="Dog ID" />
+                  <TableColumn fx:id="col_dog_name" text="Name" />
+                <TableColumn fx:id="col_diseaseType" prefWidth="104.79998779296875" text="Disease Type" />
+                  <TableColumn fx:id="col_dateContracted" prefWidth="128.800048828125" text="Date Contracted" />
+                  <TableColumn fx:id="col_needMedication" prefWidth="104.7999267578125" text="Need Medication" />
               </columns>
             </TableView>
             <TextField fx:id="tf_search" layoutX="230.0" layoutY="14.0" prefHeight="25.0" prefWidth="389.0" promptText="keywords">

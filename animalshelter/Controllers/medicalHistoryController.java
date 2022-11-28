@@ -56,6 +56,9 @@ public class medicalHistoryController implements Initializable{
     @FXML
     private TableColumn<medicalHistory, String> col_date_vaccination;
 
+    @FXML 
+    private TableColumn<medicalHistory,String> col_dog_name;
+
     @FXML
     private Label label_medicalHistory;
 
@@ -88,7 +91,7 @@ public class medicalHistoryController implements Initializable{
     public void searchMedicalHistory(){
         Connection conn = animalShelterSQL.DbConnector();
 
-        String medicalHistoryQuery = "SELECT * FROM medicalhistory";
+        String medicalHistoryQuery = "SELECT medicalhistory.dogID, dog.name, medicalhistory.microchip, medicalhistory.vaccinated, medicalhistory.dateReceived FROM animalshelter.medicalhistory INNER JOIN animalshelter.dog ON dog.dogID=medicalhistory.dogID";
 
         try {
 
@@ -96,10 +99,11 @@ public class medicalHistoryController implements Initializable{
             ResultSet rs = pst.executeQuery();
 
             while (rs.next()) {
-                medicalHistoryList.add(new medicalHistory(rs.getInt("dogID"), rs.getString("microchip"), rs.getString("vaccinated"), rs.getString("dateReceived")));
+                medicalHistoryList.add(new medicalHistory(rs.getInt("dogID"), rs.getString("name"),rs.getString("microchip"), rs.getString("vaccinated"), rs.getString("dateReceived")));
             }
 
             col_dogID.setCellValueFactory(new PropertyValueFactory<>("dogID"));
+            col_dog_name.setCellValueFactory(new PropertyValueFactory<>("name"));
             col_microchip.setCellValueFactory(new PropertyValueFactory<>("microchip"));
             col_vaccinated.setCellValueFactory(new PropertyValueFactory<>("vaccinated"));
             col_date_vaccination.setCellValueFactory(new PropertyValueFactory<>("dateReceived"));

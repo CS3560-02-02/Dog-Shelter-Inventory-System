@@ -255,7 +255,7 @@ public class appointmentController implements Initializable {
                 appointmentList
                         .add(new Appointment(rs.getString("email"), rs.getInt("appointmentID"), rs.getString("dogID"), rs.getString("name"),
                                 rs.getString("date"), rs.getString("time"), rs.getString("reason")));
-            System.out.println("ISABELLA"+rs.getString("name"));
+            //System.out.println("ISABELLA"+rs.getString("name"));
             }
 
             col_email.setCellValueFactory(new PropertyValueFactory<>("email"));

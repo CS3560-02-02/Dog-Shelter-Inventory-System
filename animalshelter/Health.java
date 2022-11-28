@@ -6,17 +6,20 @@ public class Health {
     private String diseaseType;
     private String dateContracted;
     private String needMedication;
-
+    private String name;
     // Constructor for Health
-    public Health(Integer dogID, String diseaseType, String dateContracted, String needMedication) {
+    public Health(Integer dogID, String name, String diseaseType, String dateContracted, String needMedication) {
         this.dogID = dogID;
         this.diseaseType = diseaseType;
         this.dateContracted = dateContracted;
         this.needMedication = needMedication;
+        this.name = name;
     }
 
     // getters
-
+    public String getName(){
+        return name;
+    }
     public Integer getHealthId() {
         return healthID;
     }
@@ -57,5 +60,9 @@ public class Health {
 
     public void setNeedMedication(String needMedication) {
         this.needMedication = needMedication;
+    }
+
+    public void setName(String name){
+        this.name = name;
     }
 }

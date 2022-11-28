@@ -60,9 +60,10 @@
             <TableView fx:id="table_medical_history" layoutX="193.0" layoutY="55.0" prefHeight="347.0" prefWidth="446.0">
               <columns>
                 <TableColumn fx:id="col_dogID" prefWidth="75.0" text="Dog ID" />
-                <TableColumn fx:id="col_microchip" prefWidth="130.0" text="Microchip" />
-                  <TableColumn fx:id="col_vaccinated" prefWidth="122.0" text="Vaccinated" />
-                  <TableColumn fx:id="col_date_vaccination" prefWidth="118.0" text="Date of Vaccination" />
+                  <TableColumn fx:id="col_dog_name" prefWidth="75.0" text="Name" />
+                <TableColumn fx:id="col_microchip" prefWidth="84.79998779296875" text="Microchip" />
+                  <TableColumn fx:id="col_vaccinated" prefWidth="75.20001220703125" text="Vaccinated" />
+                  <TableColumn fx:id="col_date_vaccination" prefWidth="132.0" text="Date of Vaccination" />
               </columns>
             </TableView>
             <TextField fx:id="tf_search" layoutX="261.0" layoutY="14.0" prefHeight="25.0" prefWidth="372.0" promptText="keywords">
