@@ -89,7 +89,7 @@ public class biographyController implements Initializable {
 public void searchBiography(){
     Connection conn = animalShelterSQL.DbConnector();
 
-    String BiographyQuery = "SELECT dogID, temperament, activitylevel, likes, dislikes FROM animalshelter.biography";
+    String BiographyQuery = "SELECT * FROM animalshelter.biography";
 
     try {
 
@@ -121,13 +121,13 @@ public void searchBiography(){
                 else if (bio.getTemperament().toLowerCase().contains(lowerCaseFilter)) {
                     return true; // filter matches temperament
                 }
-                else if (bio.getActivityLevel().toLowerCase().contains(lowerCaseFilter)) {
+                else if (bio.getActivitylevel().toLowerCase().contains(lowerCaseFilter)) {
                     return true; // filter matches activitylevel
                 }
-                else if (bio.getlikes().toLowerCase().contains(lowerCaseFilter)) {
+                else if (bio.getLikes().toLowerCase().contains(lowerCaseFilter)) {
                     return true; // filter matches likes
                 }
-                else if (bio.getdislikes().toLowerCase().contains(lowerCaseFilter)) {
+                else if (bio.getDislikes().toLowerCase().contains(lowerCaseFilter)) {
                     return true; // filter matches dislikes
                 }
                 return false; // does not match.

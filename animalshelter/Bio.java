@@ -17,45 +17,51 @@ public class Bio{
 
     }
 
+    //getters 
+
+    public Integer getBioID() {
+        return bioID;
+    }
 
     public Integer getDogID() {
         return dogID;
     }
     
-    public Integer getBioID() {
-        return bioID;
-    }
-
-
-    public String getActivityLevel() {
-        return activityLevel;
-    }
-
-    public void setActivityLevel(String activityLevel){
-        this.activityLevel = activityLevel;   
-    }
-
     public String getTemperament(){
         return temp;
     }
 
+    public String getActivitylevel() {
+        return activityLevel;
+    }
+
+    public String getLikes(){
+        return likes;
+    }
+
+    public String getDislikes(){
+        return dislikes;
+    }
+
+    
+
+     //setters
     public void setTemperament(String temperament){
         this.temp = temperament;
     }
 
-    public String getlikes(){
-        return likes;
+
+    public void setActivitylevel(String activityLevel){
+        this.activityLevel = activityLevel;   
     }
 
-    public void setlikes(String likes){
+
+    public void setLikes(String likes){
         this.likes = likes;
     }
 
-    public String getdislikes(){
-        return dislikes;
-    }
 
-    public void setdislikes(String dislikes){
+    public void setDislikes(String dislikes){
         this.dislikes = dislikes;
     }
 
