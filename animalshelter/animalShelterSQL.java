@@ -16,7 +16,7 @@ public class animalShelterSQL {
         try {
             Connection conn = null;
             Class.forName("com.mysql.cj.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/animalshelter", "root", "1234");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/animalshelter", "root", "testpass11!Aa");
             return conn;
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println(e);
