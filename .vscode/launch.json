@@ -23,9 +23,9 @@
             "request": "launch",
             "mainClass": "animalshelter.animalShelterGUI",
             //for Amy's desktop
-            //"vmArgs": "--module-path C:/Users/Aiden/Desktop/Javafx/javafx-sdk-19/lib --add-modules javafx.controls,javafx.fxml" 
+            "vmArgs": "--module-path C:/Users/Aiden/Desktop/Javafx/javafx-sdk-19/lib --add-modules javafx.controls,javafx.fxml" 
             //for Amy's laptop
-            "vmArgs": "--module-path C:/Users/amyzh/OneDrive/Desktop/Javafx/javafx-sdk-19/lib --add-modules javafx.controls,javafx.fxml"
+            //"vmArgs": "--module-path C:/Users/amyzh/OneDrive/Desktop/Javafx/javafx-sdk-19/lib --add-modules javafx.controls,javafx.fxml"
         }
     ]
 }

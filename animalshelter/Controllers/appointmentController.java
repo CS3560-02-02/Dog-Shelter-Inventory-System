@@ -190,6 +190,8 @@ public class appointmentController implements Initializable {
     // Updates user appointment (DONE)
     //Need to click on specific appointment row along with updating info to work
 
+
+
     @FXML
     void updateAppointmentClicked(ActionEvent event) {
 
@@ -221,6 +223,7 @@ public class appointmentController implements Initializable {
                 pst.setString(3, formattedDate);
                 pst.setString(4, Time);
                 pst.setString(5, toggleName);
+                pst.setInt(6, id);
                 pst.executeUpdate();
 
                 JOptionPane.showMessageDialog(null, "Appointment Updated!");
@@ -242,7 +245,7 @@ public class appointmentController implements Initializable {
     public void initialize(URL location, ResourceBundle resource) {
         Connection conn = animalShelterSQL.DbConnector();
 
-        String appointmentListQuery = "SELECT appointment.email, appointment.appointmentID, appointment.dogID, dog.name, appointment.date, appointment.time, appointment.reason FROM animalshelter.appointment INNER JOIN animalshelter.dog ON appointment.dogID=dog.dogID;";
+        String appointmentListQuery = "SELECT appointment.email, appointment.appointmentID, appointment.dogID, appointment.date, appointment.time, appointment.reason FROM animalshelter.appointment INNER JOIN animalshelter.dog ON appointment.dogID=dog.dogID;";
 
         //initializes the time drop down menu
         tf_time.setItems(times);
@@ -253,15 +256,11 @@ public class appointmentController implements Initializable {
             while (rs.next()) {
 
                 appointmentList
-                        .add(new Appointment(rs.getString("email"), rs.getInt("appointmentID"), rs.getString("dogID"), rs.getString("name"),
-                                rs.getString("date"), rs.getString("time"), rs.getString("reason")));
-            //System.out.println("ISABELLA"+rs.getString("name"));
-            }
+                        .add(new Appointment(rs.getString("email"), rs.getInt("appointmentID"), rs.getString("dogID"),rs.getString("date"), rs.getString("time"), rs.getString("reason")));
 
-            col_email.setCellValueFactory(new PropertyValueFactory<>("email"));
+            }
             col_appointmentID.setCellValueFactory(new PropertyValueFactory<>("appointmentID"));
             col_dog_id.setCellValueFactory(new PropertyValueFactory<>("dogID"));
-            col_dog_name.setCellValueFactory(new PropertyValueFactory<>("name"));
             col_date.setCellValueFactory(new PropertyValueFactory<>("date"));
             col_time.setCellValueFactory(new PropertyValueFactory<>("time"));
             col_reason.setCellValueFactory(new PropertyValueFactory<>("reason"));

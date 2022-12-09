@@ -46,16 +46,14 @@
       <children>
             <Button fx:id="button_create" layoutX="20.0" layoutY="354.0" mnemonicParsing="false" onAction="#createAppointmentClicked" prefHeight="31.0" prefWidth="142.0" text="Create Appointment" />
             <Button fx:id="button_update" layoutX="20.0" layoutY="444.0" mnemonicParsing="false" onAction="#updateAppointmentClicked" prefHeight="31.0" prefWidth="142.0" text="Update Appointment" />
-            <Button fx:id="button_adoptionPage" layoutX="698.0" layoutY="444.0" mnemonicParsing="false" onAction="#adoptionPageClicked" prefHeight="31.0" prefWidth="124.0" text="Back" />
+            <Button fx:id="button_adoptionPage" layoutX="698.0" layoutY="444.0" mnemonicParsing="false" onAction="#adoptionPageClicked" prefHeight="31.0" prefWidth="124.0" text="Adoption Page" />
             <TableView fx:id="table_appointments" layoutX="262.0" layoutY="34.0" prefHeight="379.0" prefWidth="570.0">
               <columns>
-                  <TableColumn fx:id="col_email" minWidth="0.0" prefWidth="115.0" text="Email" />
-                <TableColumn fx:id="col_appointmentID" prefWidth="80.00006103515625" text="Appt ID" />
-                <TableColumn fx:id="col_dog_id" prefWidth="75.199951171875" text="Dog ID" />
-                  <TableColumn fx:id="col_dog_name" prefWidth="75.0" text="Dog Name" />
-                  <TableColumn fx:id="col_date" minWidth="0.0" prefWidth="81.0" text="Date" />
-                  <TableColumn fx:id="col_reason" prefWidth="83.0" text="Reason" />
-                  <TableColumn fx:id="col_time" prefWidth="78.4000244140625" text="Time" />
+                <TableColumn fx:id="col_appointmentID" prefWidth="106.0" text="Appt ID" />
+                <TableColumn fx:id="col_dog_id" prefWidth="125.0" text="Dog ID" />
+                  <TableColumn fx:id="col_date" minWidth="0.0" prefWidth="119.0" text="Date" />
+                  <TableColumn fx:id="col_reason" prefWidth="122.0" text="Reason" />
+                  <TableColumn fx:id="col_time" prefWidth="97.0" text="Time" />
               </columns>
             </TableView>
             <Label fx:id="label_create_text" layoutX="55.0" layoutY="17.0" text="Create New Appointment">
@@ -101,3 +99,4 @@
     </AnchorPane>
   </children>
 </VBox>
+

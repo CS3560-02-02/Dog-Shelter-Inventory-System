@@ -11,7 +11,7 @@ public class Appointment {
   private String name;
 
   // Constructor for Appointments
-  public Appointment(String email, Integer appointmentID, String dogID, String name, String date, String time, String reason) {
+  public Appointment(String email, Integer appointmentID, String dogID, String date, String time, String reason) {
     this.email = email;
     this.appointmentID = appointmentID;
     this.dogID = dogID;
